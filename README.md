@@ -30,7 +30,7 @@ Start the game and activate the mod from the start menu.
 
 ## Support
 
-For support open an issue here or visit the official [Discord Server](discord.gg/3hyg9YB) to chat with me or other mod devs directly.
+For support open an issue here or visit the official [Discord Server](https://discord.gg/3hyg9YB) to chat with me or other mod devs directly.
 
 ## License
 
@@ -38,4 +38,4 @@ This project is licensed under the GNU General Public License v3.0 License - see
 
 ## Donations
 
-This mod is FREE, but please consider supporting me so that I can continue to make content like this by donating via [PayPal](paypal.me/mtolxdorff). Any amount helps!
+This mod is FREE, but please consider supporting me so that I can continue to make content like this by donating via [PayPal](https://paypal.me/mtolxdorff). Any amount helps!
