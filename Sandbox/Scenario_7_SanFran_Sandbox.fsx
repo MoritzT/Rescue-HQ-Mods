@@ -2,13 +2,13 @@
 open EMT.Modding
 
 Def.Scenario.Add {
-    ID = "Berlin_Sandbox"
+    ID = "SanFran_Sandbox"
     EnableTutorials = No
 
     ApplicantTimeout = Gt.days 1.0
     FireProtectionTime = Gt.weeks 1.0
 
-    Level = "Berlin_Sandbox", ["WholeMap"]
+    Level = "SanFran_Sandbox", ["WholeMap"]
 
     VehicleRepairRate = Gt.perHour 20.0
 
@@ -773,8 +773,8 @@ Def.Scenario.Add {
                             })
                 // no -> ignore
                 | _ -> ()
-            Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
-            Def.Uniform.RemoveAllWithTags ["US"]
+            Def.SmartObject.RemoveAllWithTags ["EuropeVehicle"]
+            Def.Uniform.RemoveAllWithTags ["EU"]
         
     EndlessMode = [
         {

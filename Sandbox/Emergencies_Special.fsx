@@ -126,8 +126,8 @@ Def.Emergency.Add {
             AddInjury 0.05 0.1 ["Light"]
             SetMood 1.0
             Hq.Unlocks.Add "MafiaBossTrialDone"
-            //Hq.Objective.add "SetupMedicalStation_Win"
-            //Hq.showQuestGiver "SetupMedical_win"
+            Hq.Objective.add "SetupMedicalStation_Win"
+            Hq.showQuestGiver "SetupMedical_win"
             
         ]
         When.Emergency.Failure [
@@ -135,15 +135,15 @@ Def.Emergency.Add {
             AddInjury 0.2 0.4 ["Medium"]
             SetMood -2.0
             Hq.Unlocks.Add "MafiaBossTrialDone"
-            //Hq.Objective.add "SetupMedicalStation_Fail"
-            //Hq.showQuestGiver "SetupMedical_fail"
+            Hq.Objective.add "SetupMedicalStation_Fail"
+            Hq.showQuestGiver "SetupMedical_fail"
             
         ]
 
         When.Emergency.Expiration[
             Hq.Unlocks.Add "MafiaBossTrialDone"
-            //Hq.Objective.add "SetupMedicalStation_Fail"
-            //Hq.showQuestGiver "SetupMedical_fail"
+            Hq.Objective.add "SetupMedicalStation_Fail"
+            Hq.showQuestGiver "SetupMedical_fail"
 
         ]
     ]

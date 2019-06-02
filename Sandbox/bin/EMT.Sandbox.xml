@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EMT.Sandbox</name>
+    </assembly>
+    <members>
+        <member name="M:NPCSimplePatrol.ChangePatrolPoint">
+            <summary>
+            Selects a new patrol point in the available list, but
+            also with a small probability allows for us to move forward or backwards.
+            </summary>
+        </member>
+    </members>
+</doc>

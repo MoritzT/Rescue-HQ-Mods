@@ -20,9 +20,34 @@ let BerlinEmergencyRegions =
             RequiredTags = ["OnLand"]
         }
     ]
-
+    
 Def.Level.Add {
     ID = "Berlin_Sandbox"
+    DefaultRoom = "Concrete"
+    Lots = [
+        {
+            ID = "WholeMap"
+            RunningCostPerCell = Gt.perDay 0.0
+            PricePerCell = 0
+            Unlock = []
+            Region = [
+                Rect (0,0) (60, 60)
+            ]
+        }
+    ]
+    
+    Cells = [
+        for x = 0 to 59 do yield Marker (x, -1, ZNeg) "Street"
+        for x = 0 to 59 do yield Marker (x, 60, ZPos) "Street"
+        for z = 0 to 59 do yield Marker (-1, z, XNeg) "Street"
+        for z = 0 to 59 do yield Marker (60, z, XPos) "Street"
+    ]
+
+    EmergencyRegions = BerlinEmergencyRegions
+}
+
+Def.Level.Add {
+    ID = "SanFran_Sandbox"
     DefaultRoom = "Concrete"
     Lots = [
         {

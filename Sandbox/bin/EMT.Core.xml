@@ -1,0 +1,1938 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EMT.Core</name>
+    </assembly>
+    <members>
+        <member name="T:EMT.Core.Actors.StoreCurrentItemActorMode">
+            <summary>
+            Takes the item from source and stores it in target.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.MoveItemActorMode">
+            <summary>
+            Takes the item from source and stores it in target.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Actors.RandomWalkBehaviour.targetCellProperty">
+            <summary>
+            actor doesn't really try to move towards this target, but it still affects the weights when choosing where to go next.
+            chosen randomly if null.
+            reset when somewhat close or unreachable.
+            should cause actors to flock around stations of their own profession.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ShiftOverActorMode">
+            <summary>
+            Makes the actor leave the hq. He'll come back when he sees he should take part in the current shift.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.LeaveHQ.AfterWorkOutSideHqState">
+            <summary>
+            Outside of the hq until actor should be in hq again (shifts/overtime)
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.LeaveHQ.IOutsideHqState">
+            <summary>
+            Marker interface for states that should be treated as outside the hq.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.IdleState">
+            <summary>
+            An <see cref="P:EMT.Core.Actors.Common.IdleState.Actor"/> is moving from one cell to another.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.CompositeBehaviour">
+            <summary>
+            Allows to queue multiple behaviours. Eg. walk then do something.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.Moving.GotoBehaviour">
+            <summary>
+            Moves the actor to the specified target location using the FloodFillPathfinding thing.
+            Will only work if there is a target point at the specified target location.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Actors.Common.Moving.GotoBehaviour.AllowTeleport">
+            <summary>
+            If true, actors can teleport if there's no path - so buildmode can ignore unreachable actors
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.Moving.MovingState">
+            <summary>
+            An <see cref="P:EMT.Core.Actors.Common.Moving.MovingState.Actor"/> is moving from one cell to another.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Common.StateQueueBehaviour">
+            <summary>
+            Allows to queue multiple states.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.OverrideActorModeEvent">
+            <summary>
+            Event sent to traits when the actor has no behaviour at this moment.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.SetActorModeEvent">
+            <summary>
+            Event sent to traits when the actor has no behaviour at this moment.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Actors.ActorModeImportance.NotOverridable">
+            <summary>Emergency, Fire, ...</summary>
+        </member>
+        <member name="F:EMT.Core.Actors.ActorModeImportance.High">
+            <summary>Needs, ...</summary>
+        </member>
+        <member name="F:EMT.Core.Actors.ActorModeImportance.Low">
+            <summary>Stations, ...</summary>
+        </member>
+        <member name="F:EMT.Core.Actors.ActorModeImportance.Fallback">
+            <summary>Training, Random walk, ...</summary>
+        </member>
+        <member name="F:EMT.Core.Actors.ActorModeImportance.RandomWalk">
+            <summary>Less important than fallbacks ..</summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ActorData">
+            <summary>
+            Actor serialisation.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorData.#ctor(EMT.Core.Simulation,EMT.Core.Actors.IProfessionDef)">
+            <summary>
+            Makes a randomized actor data.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ActorEmergencyAvailability">
+            <summary>
+            Unless available, specifies why an actor cannot be used for an emergency
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.Actor">
+            <summary>
+            Represent living objects like humans and animals.
+            An Actor perfoms actions.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.Actor.ModeImportance">
+            <summary>The importance of the current <see cref="P:EMT.Core.Actors.Actor.Mode"/>.</summary>
+        </member>
+        <member name="P:EMT.Core.Actors.Actor.Mode">
+            high-level stuff the actor does: default (in hq), training, emergency, hiring, ...
+            never null
+        </member>
+        <member name="P:EMT.Core.Actors.Actor.ShiftLockedHint">
+            <summary>Doesn't affect gamelogic, just a hint for player himself ..</summary>
+        </member>
+        <member name="E:EMT.Core.Actors.Actor.OnThoughtBubbleChanged">
+            Called when an icon was set to be shown as thought bubble.
+            Arguments: the actor, icon id, text key
+        </member>
+        <member name="F:EMT.Core.Actors.Actor.defaultModeImportance">
+            Which importance should be used, when no importance is specified?
+            Very useful for FSX <see cref="T:EMT.Core.Actors.UpdateActorModeEvent"/>s.
+        </member>
+        <member name="M:EMT.Core.Actors.Actor.TryOverrideMode(EMT.Core.Actors.ActorMode,System.Nullable{EMT.Core.Actors.ActorModeImportance})">
+            Attempts to set a new mode for the actor, returns true on success. Does not affect current behaviour or state.
+        </member>
+        <member name="P:EMT.Core.Actors.Actor.EmergencyAvailability">
+            <summary>
+            Tells whether an actor can be used on emergencies, or if not, why.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.Actor.Fire">
+            <summary>
+            Flags the actor as being fired. Makes him leave the hq as soon as possible.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ActorList">
+            <summary>
+            Contains all <see cref="T:EMT.Core.Actors.Actor"/>s of the simulation.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorList.Create(EMT.Core.Actors.IProfessionDef,EMT.Core.Actors.ActorData)">
+            <summary>
+            Add a new actor the list.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorList.Create(EMT.Core.Actors.IProfessionDef)">
+            <summary>
+            Add a new actor the list.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorList.FireImmediate(EMT.Core.Actors.Actor)">
+            <summary>Fire the actor from the HQ without leaving first.</summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorList.Remove(EMT.Core.Actors.Actor)">
+            <summary>Remove the actor from the HQ without leaving first.</summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorList.Tick(EMT.Core.TickTime)">
+            <summary>
+            Tick all actors.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ActorModeData">
+            Base for serialized state of actor modes
+        </member>
+        <member name="T:EMT.Core.Actors.ActorMode">
+            An actor will always be in a single mode, which determines a few things it does and/or the user can do with them, for example:
+            - default mode, where the actor just tries to fulfill his needs unless instructed otherwise
+            - emergency mode
+            - training mode
+            - ...
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.Assign(EMT.Core.Actors.Actor)">
+            <summary>
+            Is called when the actor starts using the <see cref="T:EMT.Core.Actors.ActorMode"/>.
+            </summary>
+            <returns>Returns false, when the <see cref="T:EMT.Core.Actors.ActorMode"/> is not usable.</returns>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.Tick(System.Boolean)">
+            Called everytime the actor ticks.
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.Stop">
+            <summary>Can be called in <see cref="M:EMT.Core.Actors.ActorMode.Tick(System.Boolean)"/> to make the <see cref="T:EMT.Core.Actors.ActorMode"/> stop as soon as possible.</summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.Unassign">
+            <summary>Get's called when Stop is called first time or the ActorMode is done for another reason.</summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.GetNewBehaviour">
+            <summary>
+            Return the next <see cref="P:EMT.Core.Actors.ActorMode.Behaviour"/> the actor should do.
+            If it returns null, the <see cref="T:EMT.Core.Actors.ActorMode"/> is done.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.ActorMode.Behaviour">
+            <summary>The current <see cref="T:EMT.Core.Actors.IBehaviour"/>. Can be null until GetState get's called.</summary>
+            <remarks>Disposes the old behaviour when it get's overridden.</remarks>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.UpdateBehaviour">
+            <summary>
+            Aborts the current activity the actor is doing and
+            reevaluates the current <see cref="T:EMT.Core.Actors.IBehaviour"/>.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ActorMode.GetState">
+            <summary>
+            Returns the next state for the actor to perform.
+            </summary>
+            <returns>When it returns null, the state is done.</returns>
+        </member>
+        <member name="T:EMT.Core.Actors.ApplicantList">
+            <summary>
+            Manages all the applications .. create/store/accept
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.ApplicantList.AvailableList">
+            <summary>
+            List of all available applicants. hiring them moves them to the hired list.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.ApplicantList.HiredList">
+            <summary>
+            List of hired applicants. can all be spawned at once, at start of new week.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ApplicantList.CreateApplicant(System.String)">
+            <summary>
+            Creates a new applicant by looking up the profession by string.
+            Won't create an applicant if the def does not exist.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ApplicantList.CreateApplicant(EMT.Core.Actors.IProfessionDef)">
+            <summary>
+            Creates a new applicant and adds it to the list.
+            Def should not be null. If it is, logs an error message.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ApplicantList.Hire(EMT.Core.Actors.Applicant,EMT.Core.Shift)">
+            <summary>
+            Hire the applicant - this will move it from the available list to the hired list.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ApplicantList.Dismiss(EMT.Core.Actors.Applicant)">
+            <summary>
+            Dismiss an application ...
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.ApplicantList.SpawnHiredActors">
+            <summary>
+            Removes everyone from the hired list and spawns real actors in the world.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.IActorProvider">
+            <summary>
+            All actors and properties of actors provide the actor, such that in FSX all commands may do something with the actor (e.g. alter the need of the actor).
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.ActorProvider">
+            <summary>
+            Convenience default implementation of <see cref="T:EMT.Core.Actors.IActorProvider"/>.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.IRelevantActorsProvider">
+            <summary>
+            Used by various functions in FSX to access the actors being part of a certain thing (e.g. Task)
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Actors.WorkActorMode">
+            <summary>
+            Mode for an actor that is assigned to some station.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.Appearance.IUniformDef.Profession">
+            The role names that can use this uniform. specified in uniform instead of role, so mods can add new uniforms to existing roles.
+        </member>
+        <member name="P:EMT.Core.Actors.Appearance.ActorAppearance.RandomInt">
+            A random non-negative integer, for additional custom random stuff i dont care about here
+        </member>
+        <member name="M:EMT.Core.Actors.Appearance.ActorAppearance.GenerateRandom(EMT.Core.Simulation,EMT.Core.Actors.IProfessionDef,EMT.Core.Actors.ActorGender)">
+            Generates a random appearance for a given profession definition
+        </member>
+        <member name="T:EMT.Core.Actors.BehaviourData">
+            <summary>Base for serialized state of actor modes</summary>
+        </member>
+        <member name="T:EMT.Core.Actors.IBehaviour">
+            <summary>
+            Controlls an actor's current state.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.IBehaviour.Actor">
+            <summary>
+            The <see cref="P:EMT.Core.Actors.IBehaviour.Actor"/> owning this behaviour.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.IBehaviour.Evaluate">
+            <summary>
+            Force the behaviour to evaluate. Must be called befor IsDone is checked.
+            WARNING: Might be an expensive calculation!
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.IBehaviour.IsDone">
+            <summary>
+            Check if the behaviour is done.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.IBehaviour.GetState">
+            <summary>
+            Get's the next state the <see cref="P:EMT.Core.Actors.IBehaviour.Actor"/> should be in.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.IBehaviour.GetData">
+            <summary>Get serializeable representation of this behaviour.</summary>
+        </member>
+        <member name="T:EMT.Core.Actors.IProfessionDef">
+            <summary>
+            firefighter, policeman, medic, ...
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.ActorLevel.CurrentLevel">
+            <summary>Obviously the current level. Starts at 0 and is at most <see cref="P:EMT.Core.Actors.ActorLevel.MaxLevel"/>.</summary>
+        </member>
+        <member name="P:EMT.Core.Actors.ActorLevel.MaxLevel">
+            <summary>The maximum reachable <see cref="P:EMT.Core.Actors.ActorLevel.CurrentLevel"/>.</summary>
+            <remarks>Won't change while running.</remarks>
+        </member>
+        <member name="T:EMT.Core.Actors.IState">
+            <summary>
+            An actor's state. E.g. used for animations.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.IState.Start">
+            <summary>
+            Called when state gets assigned to an actor, guaranteed to happen before first Tick.
+            NOT called again after savegame reload.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.Traits.ITraitDef.IsEverVisible">
+            <summary>
+            True if GetStyle ever returns anything other than null.
+            If false, implies the trait is always hidden.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Actors.Traits.ITraitDef.GetStyle(System.Double)">
+            <summary>
+            Returns the style name for the given trait value, or null if it is supposed to be hidden.
+            Style is used to look for a TraitStyleAsset.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Actors.Traits.Trait.DisplayStyle">
+            <summary>
+            Current display style name for the trait, or null for hidden.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Activities.DoingActivityState">
+            <summary>
+            An <see cref="T:EMT.Core.Actors.Actor"/> is using <see cref="T:EMT.Core.SmartObjects.SmartObject"/>.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Activities.DoingActivityState.TriggerAbort">
+            Tell this activity state to abort.
+            This will make it finish the state machine in an appropriate way over time, skipping the states it can.
+        </member>
+        <member name="M:EMT.Core.Activities.DoingActivityStateExtensions.TryAbortActivity(EMT.Core.Actors.Actor)">
+            Attempts to abort the current activity of the actor.
+            Note that this won't abort the activity immediately, but will take at least 1 tick or exit animation or something.
+            Returns true on success or if there was no current activity.
+            Returns false if the actor will keep doing its current activity (not sure if this will ever happen).
+        </member>
+        <member name="M:EMT.Core.Activities.DoingActivityStateExtensions.GetTimeUsingActivity(EMT.Core.Actors.Actor)">
+            <summary>
+            Returns a tickspan indicating how long the actor has been using the current activity in loop state, or null if it isnt using any.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Activities.ActivityCellProperty.InstanceId">
+            <summary>
+            Must return a unique id in the simulation. Used to serialize in savegame and lookup.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Activities.ActivityCellProperty.IsFree">
+            <summary>Could also be called "IsReservable".</summary>
+        </member>
+        <member name="M:EMT.Core.Activities.ActivityCellPropertyExtensions.GetCurrentActivity(EMT.Core.Actors.Actor)">
+            Returns the current activity the actor is doing or null if it isnt doing an activity at this time.
+        </member>
+        <member name="M:EMT.Core.Activities.IEffectDef.Create(EMT.Core.Actors.Actor)">
+            Actual implementation of the effect.
+        </member>
+        <member name="T:EMT.Core.Activities.SmartObjectActivityCellProperty">
+            instance of activity cell properties defined on smart objects
+        </member>
+        <member name="T:EMT.Core.Emergencies.EmergencyDispatchSetup">
+             <summary>
+             A container to keep track of stuff that a player would like to send to an emergency.
+             Contains related logic to check if dispatch is possible, success chance, fulfillments, ..
+             To do that, the container must be created for a specific emergency.
+            
+             Pauses the simulation until disposed.
+             </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.ActorStatus.Availability">
+            <summary>Can only be assigned if Available.</summary>
+        </member>
+        <member name="T:EMT.Core.Emergencies.EmergencyDispatchSetup.ProfessionData">
+            <summary>
+            Groups a profession with the available/required slots for people/item.
+            Slot status determines whether a dispatch is possible or not.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.AssetName">
+            <summary>The asset which is tracked by this class.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.AddedPercentagePerAsset">
+            <summary>The percentage each assigned asset contributes.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.MaxAssignableCount">
+            <summary>The maximum count of assets which contribute.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.AssignedCount">
+            <summary>Amount of assets assigned to the emergency.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.TotalPercentageAdded">
+            <summary>The contributes percentage from this requirement. Based on assigned count.</summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetRequirementStatus.SetAssignedCount(System.Int32)">
+            <summary>Set AssignedCount and returns unused count.</summary>
+            <remarks>E.g. MaxAssignableCount is 6 and count is 8, function returns 2.</remarks>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetWasteStatus.AssetName">
+            <summary>The asset which is tracked by this class.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.AssetWasteStatus.Count">
+            <summary>The amount of unsed assets of this type.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyDispatchSetup.Professions">
+            <summary>Info about actor/item slot usage, based on assigned stuff.</summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyDispatchSetup.Update">
+            <summary>Update <see cref="P:EMT.Core.Emergencies.EmergencyDispatchSetup.SuccessChance"/> and <see cref="P:EMT.Core.Emergencies.EmergencyDispatchSetup.CanDispatch"/> as well as reputation gain/loss.</summary>
+            <remarks>should be called on every change</remarks>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyModification.SuccessChance">
+            <summary>Additional SuccessChance.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyModification.Assets">
+            <summary>Additional assets.</summary>
+        </member>
+        <member name="T:EMT.Core.Emergencies.EmergencyActorMode">
+            <summary>
+            Mode entered as soon as an actor is successfully assigned to an emergency.
+            Mode left as soon as the actor got out of the vehicle after returning from an emergency, or fails due to any other reason.
+            Actor must be assigned a vehicle seat or it will simply fail going to the emergency.
+            This mode is responsible for registering the actor on the emergency as assigned.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.EmergencyActorMode.Emergency">
+            <summary>
+            The emergency the actor is assigned to.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.IEmergencyDef.TitleKey">
+            Localization key for the emergency title.
+            We usually generate it from the ID, but some emergencies need to share keys.
+            Still generated from ID as usual if null or empty.
+        </member>
+        <member name="P:EMT.Core.Emergencies.IEmergencyDef.InitialDescriptionKeys">
+            Localization Keys for initial description texts. One of those will be chosen randomly when creating an emergency.
+        </member>
+        <member name="P:EMT.Core.Emergencies.IEmergencyDef.PreparationTime">
+            <summary>
+            Time the player has to prepare for an emergency and dispatch. If nothing is dispatched during that time, emergency fails.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.IEmergencyDef.ResolutionTime">
+            <summary>
+            Time the emergency takes to resolve itself after the last vehicle reached the emergency.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Emergencies.Emergency">
+            <summary>
+            An emergency requires skills and item, and determines a success chance by sampling satisfaction of those requirements over time.
+            Vehicles and actors must be assigned.
+            Vehicles may be onsite.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.TicksInPreparation">
+            Amount of ticks spent or currently spending in preparation.
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.TicksInResolution">
+            Amount of ticks spent or currently spending in resolution.
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.TicksInWaitingForVehicles">
+            <summary>Amount of ticks spent in state WaitingForVehicles.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.RemainingPreparationTicks">
+            <summary>Remaining ticks until emergency has to be prepared.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.RemainingResolutionTicks">
+            <summary>Remaining ticks until emergency is resolved.</summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.CanDispatch">
+            <summary>
+            True if the emergency is in a state where it allows dispatching resources.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.SuccessChance">
+            <summary>
+            Success chance copied over from dispatch setup when dispatching. 0 before that.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.ActorsOnSite">
+            <summary>
+            All actors that are on site and ready for work.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.VehiclesOnsite">
+            <summary>
+            All vehicles that are on site and ready for work.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.AssignedVehicles">
+            <summary>
+            All vehicles currently assigned to this emergency, regardless of where they are.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.AssignedActors">
+            <summary>
+            All actors currently assigned to this emergency, regardless of where they are.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.RequiredAssets">
+            <summary>
+            used for emergency dispatch, computed from def.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Emergencies.Emergency.RelevantProfessions">
+            <summary>
+            used for emergency dispatch, computed from def.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.Emergency.Dispatch(EMT.Core.Emergencies.EmergencyDispatchSetup)">
+            <summary>
+            Sends the resources specified in the given setup object to this emergency.
+            Nothing more can be sent after that.
+            Does nothing if the setup object does not allow dispatch.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.Emergency.AddVisitor(EMT.Core.Actors.ActorData)">
+            <summary>
+            Picks a random vehicle and puts the visitor into it, so he will be spawned when vehicle returns to hq.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.GetRandom(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Int32)">
+            <summary>
+            Adds an emergency which has all the given tags and is within minLevel and maxLevel (inclusive).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.GetRandom(System.Int32,System.Int32)">
+            <summary>
+            Returns an emergency which has at least one of the given tags and within minLevel and maxLevel (inclusive).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.GetRandom">
+            <summary>
+            Returns a random emergency.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.InternalRemove(EMT.Core.Emergencies.Emergency)">
+            <summary>removes unconditionally</summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.Remove(EMT.Core.Emergencies.Emergency)">
+            <summary>removes only completed emergencies</summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.Cheat_Remove(EMT.Core.Emergencies.Emergency)">
+            <summary>removes emergency regardless of state, unless people have been dispatched</summary>
+        </member>
+        <member name="M:EMT.Core.Emergencies.EmergencyManager.UpdateLists">
+            <summary>
+            Updates the separate open/in-progress/completed lists
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Emergencies.EmergencyWaveManager">
+            Takes care of starting waves and ticking the active one.
+            <remarks>
+              States of emergency waves:
+              1) invisible: waiting for IsVisible() to return true
+              2) upcoming: waiting a fixed amount of time
+              3) active: the wave is active and controlls adding of emergencies
+            </remarks>
+        </member>
+        <member name="T:EMT.Core.BuildMode">
+            <summary>
+            Exists while the simulation is in build mode state and performs building requirements analysis.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.BuildMode.Update(EMT.Core.Simulation)">
+            <summary>
+            Should be called to update build mode requirements (reachability etc).
+            Results depend on flood fill pathfinding status, so that must be up to date for this to produce up-to-date output.
+            If the flood fill is not up to date, this will still produce reasonable output for display to the user.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.BuildMode.UnreachableObjects">
+            <summary>
+            will contain either problematic hq entry point doors, or unreachable activity objects. intented for outlines ..
+            </summary>
+        </member>
+        <member name="P:EMT.Core.BuildMode.AllRequirementsFulfilled">
+            <summary>
+            True if all requirements were fulfilled and build mode can be exited.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Economy.EconomySystemData">
+            Saved data for economy system, such as current player funds etc
+        </member>
+        <member name="P:EMT.Core.Economy.EconomySystem.PendingMaintenanceCosts">
+            <summary>E.g. sold objects.</summary>
+        </member>
+        <member name="P:EMT.Core.Economy.EconomySystem.MaintananceNextWeek">
+            <summary>The maintenance you would have to pay for a whole week with everything you have built right now.</summary>
+        </member>
+        <member name="P:EMT.Core.Economy.EconomySystem.WagesNextWeek">
+            <summary>The wages you would have to pay for a whole week with everybody you have hired right now.</summary>
+        </member>
+        <member name="P:EMT.Core.Economy.EconomySystem.PaymentsNextWeek">
+            <summary>All payments you would have to pay for a whole week with everything you have right now.</summary>
+        </member>
+        <member name="P:EMT.Core.Economy.EconomySystem.Settings">
+            helper to quickly get economy settings
+        </member>
+        <member name="M:EMT.Core.Economy.EconomySystem.TakeCityGrant">
+            <summary>Takes a city grant, if it there is one left and it isn't already taken.</summary>
+            <returns>Returns true if successfully taken, otherwise false.</returns>
+        </member>
+        <member name="M:EMT.Core.Economy.EconomySystem.Reset">
+            <summary>Reset tracker and if city grant is taken.</summary>
+        </member>
+        <member name="T:EMT.Core.Economy.IEconomySystemSettings">
+            Settings defining how the economy works, configured by mods.
+        </member>
+        <member name="T:EMT.Core.FloatingNotificationEvent">
+            <summary>
+            floating notifications are player feedback things to show gains/losses for money etc
+            core just defines possible types and interface for ui
+            </summary>
+        </member>
+        <member name="T:EMT.Core.GameAnalytics">
+            <summary>
+            Allows to send analytics events and keeps track of any temporary state needed for the events we want to track.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.GameAnalytics.IImpl">
+            <summary>
+            stuff needed from application but unknown to core.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.GameAnalytics.TrackEndOfDayStats(System.Int32,System.Int64,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            starting at 0 for first day. stats tracked at end of that day.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Goal">
+            <summary>
+            Tracks a specific goal. The goal very general and can be used anywhere.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Modding.ModManager">
+            <summary>
+            Keeps track of all *available* mods (their ModInfo).
+            List can be updated to check for changes on disk.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Modding.ModManager.GetAdditionalMods">
+            <summary>
+            To be implemented by unity project.
+            Mod names that already exist are ignored.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Modding.ModManager.UpdateAvailableMods">
+            <summary>
+            Will first look for mods in the configured directory (ie game directory) and then look for additional mods (ie steam workshop)
+            Mods in configured directory get priority.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Modding.ModInfo">
+            <summary>
+            Contains all information contained within a Mod.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Modding.ModInfo.Name">
+            <summary>
+            mod name, eg "MainMod"
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Modding.ModInfo.BuiltDataDirectory">
+            <summary>
+            Place where generated assets (ie asset bundles) are found. different from main mod directory so this can work in editor.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Modding.ModInfo.MainDirectory">
+            <summary>
+            Place where all normal mod files (fsx scripts etc, everything that isnt built from editor) are found.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Modding.ModInfo.ContainsScripts">
+            <summary>
+            If true, contained scripts may break existing savegames, so this mod should not be added/removed to existing saves.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Modding.ModInfo.#ctor(EMT.Core.Configuration,System.String,System.String)">
+            <summary>
+            If overrideDirectory is specified, assumes both scripts and assets are located in that directory.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Modding.ModInfo.Update">
+            <summary>
+            TODO should check for changes on disk and update info accordingly. eg. forget compiled info if scripts have changed
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Modding.Scripts.CompiledScript">
+            <summary>
+            A state of <see cref="T:EMT.Core.Modding.Scripts.Script"/>.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Modding.Scripts.CompiledScript.compiler">
+            Is null when WaitForExit() was called.
+        </member>
+        <member name="M:EMT.Core.Modding.Scripts.CompiledScript.#ctor(EMT.Core.Configuration,System.String,EMT.Core.Modding.Scripts.CompiledScriptMode)">
+            If compiledAsync = true you need to call WaitForExit() before accassing any properties!
+        </member>
+        <member name="T:EMT.Core.Modding.Scripts.LoadedScript">
+            <summary>
+            A state of <see cref="T:EMT.Core.Modding.Scripts.Script"/>.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Modding.Scripts.Script">
+            <summary>
+            A reference to a script. States: Known, Compiled, Loaded.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Notifications.EmergencySuccessNotification">
+            <summary>
+            Emergency success notification .. gives player reward when dismissed or when expired.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Notifications.Notification">
+            <summary>
+            Any kind of notification that ends up in the UI.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Notifications.Notification.Type">
+            <summary>
+            Notification type used for visualization (icon, loca key).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Notifications.Notification.Update(EMT.Core.TickTime,System.Boolean@)">
+            <summary>
+            Called regularly to check for expiration.
+            If expired, notification will be removed.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Notifications.Notification.OnRemove">
+            <summary>
+            Called when player dismisses notification, or when notification expired on its own (see Update).
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Notifications.NotificationList">
+            <summary>
+            Keeps track of all notifications.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Notifications.NotificationList.Remove(EMT.Core.Notifications.Notification)">
+            <summary>
+            Remove a notification and let it do whatever it wants to do.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Notifications.StackingNotification">
+            <summary>
+            Notification type that stacks, where each stack instance has its own expiration time.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Objectives.Objective">
+            <summary>
+            A list of reachable goals.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Items.ItemSlotType.Passive">
+            <summary>ItemSlot doesn't care when it get's or loses items.</summary>
+        </member>
+        <member name="F:EMT.Core.Items.ItemSlotType.Pushing">
+            <summary>ItemSlot wants to get rid of the item as fast as possible.</summary>
+        </member>
+        <member name="F:EMT.Core.Items.ItemSlotType.Pulling">
+            <summary>ItemSlot wants to get the item as fast as possible.</summary>
+        </member>
+        <member name="T:EMT.Core.Items.ItemSlotSwapActivityCellProperty">
+            <summary>
+            Base class to take an item an out of the <see cref="T:EMT.Core.Items.ItemSlot"/> and give it the actor.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Items.ItemSlotTakeActivityCellProperty">
+            <summary>
+            Base class to take an item an out of the <see cref="T:EMT.Core.Items.ItemSlot"/> and give it the actor.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Items.ItemSlotStoreActivityCellProperty">
+            <summary>
+            Base class to store an item an actor is carying into the <see cref="T:EMT.Core.Items.ItemSlot"/>.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Items.IItemSlotContainer">
+            <summary>
+            Allows to get all ItemSlots of an object.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Items.IItemSlotContainer.ItemSlots">
+            <summary>Item slots contained in this object.</summary>
+            <remarks>The enumerable most not change.</remarks>
+        </member>
+        <member name="F:EMT.Core.Items.ItemType.Normal">
+            <summary>Shown everywhere: emergency dispatch, storage overview, ..</summary>
+        </member>
+        <member name="F:EMT.Core.Items.ItemType.StorageOnly">
+            <summary>Only shown in storage overview.</summary>
+        </member>
+        <member name="F:EMT.Core.Items.ItemType.Hidden">
+            <summary>Not shown anywhere.</summary>
+        </member>
+        <member name="T:EMT.Core.Items.IItemDef">
+            <summary>
+            Defines a kind of item.
+            Notes:
+            - item kinds that have different states (eg full, empty, ...) are represented by different item definitions
+            - in code there exist no item instances. item does not have properties or an identity.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Items.IItemDef.ProfessionID">
+            <summary>
+            Defines what profession this item type belongs to.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Items.ItemSlot">
+             <summary>
+             Slot for an item item, can be either empty or contain an item of some type.
+             May at some point be extended to contain stacks of the same item type.
+            
+             Note: there is no class to represent item instances themselves, as they don't have any properties and not even an identity.
+             </summary>
+        </member>
+        <member name="P:EMT.Core.Items.ItemSlot.CurrentItemDef">
+            <summary>
+            Item type that is currently in this slot.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Items.ItemSlot.RequiredItemDef">
+            <summary>
+            Which type of item needs to go into this slot (or a variant of it). null if anything can go in here.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.#ctor">
+            <summary>
+            Create an item slot accepting any kind of item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.#ctor(EMT.Core.Definitions,System.String)">
+            <summary>
+            Create an item slot that accepts only items of the specified definition, or one of its variants
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.SetItem(EMT.Core.Items.IItemDef)">
+            <summary>
+            Replaces the item in this slot, or removes the item in this slot if null is passed.
+            Returns true on success (not every kind of item might be allowed to be put into this slot).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.SetItem(EMT.Core.Definitions,System.String)">
+            <summary>
+            Same as SetItem but with defs and string argument. if the specified definition is empty or not found, empties this slot.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.IsAssignable(EMT.Core.Items.IItemDef)">
+            <summary>
+            Returns true if the specified item type can in general be put into this slot, regardless of the current slot state.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.TransferTo(EMT.Core.Items.ItemSlot)">
+            <summary>
+            Tries to transfers the item in this slot into the other slot.
+            </summary>
+            <param name="otherSlot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMT.Core.Items.ItemSlot.Swap(EMT.Core.Items.ItemSlot)">
+            <summary>
+            Exchanges the <see cref="P:EMT.Core.Items.ItemSlot.CurrentItemDef"/> from this and <paramref name="otherSlot"/>.
+            </summary>
+            <returns>Returns true if exchange was successfull</returns>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.IPropertiesObject.Properties">
+            <summary>
+            Must be an immutable collection
+            </summary>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.ICellPropertyDef.VisualizationHint">
+            <summary>
+            Used to look up which asset to display for this cell property
+            </summary>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.ICellPropertyDef.ErrorHint">
+            <summary>Which error should be displayed?</summary>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.ICellPropertyDef.Transform">
+            relative object space transform
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.CellProperty.VisualizationHint">
+            <summary>
+            Used for asset lookup.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.CellProperty.VisualizationPriority">
+            <summary>
+            For multiple cellproperties on the same transform, the one with the highest priority is visualized.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.CellProperty.Transform">
+            absolute world space transform
+        </member>
+        <member name="M:EMT.Core.PropertyGrids.CellProperty.Dispose">
+            Don't dispose when this CellProperty is still required by other cell properties!
+        </member>
+        <member name="P:EMT.Core.PropertyGrids.PropertyGrid.Version">
+            A version number, which changes on every change.
+        </member>
+        <member name="M:EMT.Core.PropertyGrids.PropertyGrid.IsDependency(EMT.Core.PropertyGrids.IPropertiesObject)">
+            Checks if the object is required by any other object.
+        </member>
+        <member name="M:EMT.Core.PropertyGrids.PropertyGrid.GetNumCells``1">
+            <summary>
+            Calculates number of cells of the given type, ie cells with a BlockingCellProperty.
+            Only counts cell centers, not edges!
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Reputation.ReputationSystemData">
+            Saved data for reputation system, such as current player funds etc
+        </member>
+        <member name="P:EMT.Core.Reputation.ReputationSystem.Settings">
+            helper to quickly get economy settings
+        </member>
+        <member name="M:EMT.Core.Reputation.ReputationSystem.Income(System.Int32)">
+            <summary>Add reputation. Resulting reputation is guaranteed to stay inside [0,cap]</summary>
+            <returns>The actuall added amount.</returns>
+        </member>
+        <member name="M:EMT.Core.Reputation.ReputationSystem.CanPay(System.Int32)">
+            <summary>Returns true when amount of reputation is available.</summary>
+        </member>
+        <member name="M:EMT.Core.Reputation.ReputationSystem.Pay(System.Int32)">
+            <summary>Pay given amount. Returns false when couldn't pay.</summary>
+        </member>
+        <member name="M:EMT.Core.Reputation.ReputationSystem.UpdateRank">
+            <summary>
+            Must be called whenever the level is ready to increase (eg. at end of week).
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Reputation.IReputationSystemSettings">
+            Settings defining how the reputation system works.
+        </member>
+        <member name="P:EMT.Core.Reputation.IReputationSystemSettings.Ranks">
+            <summary>
+            How much the reputation cap increases if at the end of a cycle (eg. week) current reputation == current cap
+            </summary>
+        </member>
+        <member name="P:EMT.Core.IUnlockInfo.RequiredReputation">
+            <summary>Required reputation to unlock.</summary>
+        </member>
+        <member name="P:EMT.Core.IUnlockInfo.Goals">
+            <summary>Required goals.</summary>
+        </member>
+        <member name="M:EMT.Core.UnlockableExtensions.WasUnlocked(EMT.Core.Unlocks.UnlockList,EMT.Core.IUnlockable)">
+            <summary>Is this unlockable and is unlocked.</summary>
+        </member>
+        <member name="M:EMT.Core.UnlockableExtensions.IsUnlockable(EMT.Core.Unlocks.UnlockList,EMT.Core.IUnlockable)">
+            <summary>Returns false when already unlocked or any goal not met or not enough reputation.</summary>
+        </member>
+        <member name="M:EMT.Core.UnlockableExtensions.Unlock(EMT.Core.Unlocks.UnlockList,EMT.Core.IUnlockable)">
+            <summary>Returns false when already unlocked or any goal not met or not enough reputation.</summary>
+        </member>
+        <member name="T:EMT.Core.SimulationSerialization">
+            <summary>
+            SimulationData to Stream/byte[] and back
+            methods may throw
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SimulationEndStatistics">
+            <summary>
+            Statistics shown at the end of the game (win and lose screen).
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SmartObjectTypes.Vehicles.TakeVehicleSeatBehaviour">
+            <summary>
+            This is basically a wrapper around DoActivityBehavior, with the only difference, that it requires
+            the Actor to finish it. Because an emergency cannot be aborted while it is running. Ultimately 
+            the DoActivityBehavior takes care of moving to the Vehcile, boarding it, waiting until it is released (see Emergency System)
+            and then unboarding it again.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.NumItemSlots">
+            <summary>
+            Configured amount of slots. Slots can only contain item associated to the same profession as the vehicle itself!
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.ProfessionDef">
+            <summary>
+            Configured value for which people can use this vehicle.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.AddVisitor(EMT.Core.Actors.ActorData)">
+            <summary>
+            Adds a visitor that will be spawned when the vehicle is in the garage.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.SpawnVisitors">
+            <summary>
+            Spawns all visitors from the visitors list at random seat positions.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.BreakDowns">
+            <summary>Number of times the vehicle broke down.</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.CurrentDamage">
+            <summary>Current Damage... Shouldn't reach MaxDamage.</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.IsRequestingRepair">
+            <summary>Should the vehicle be repaired?</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.Vehicles.Vehicle.CanRepair">
+            <summary>Does the vehicle need repairing?</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.IProgressStationOutputItemSlotActivity.IsOptional">
+            <summary>True means the stations cycle can end even though there's an item in this slot?</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.IProgressStationDef.Activities">
+            <summary>
+            Activities for people working on the station. Does NOT include other activities defined on the smartobject itself.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.IProgressStationDef.SingleItemOnly">
+            <summary>
+            When true at any given point in time, there should only be one of these true:
+            * have an item in input
+            * have an item in ouput
+            * currently processing
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation">
+            <summary>
+            Represents types of smartobjects where actors can be assigned to perform tasks, like maintenance, hiring, ...
+            The number of activities defined on the station object definition determines the maximum amount of people that can be assigned.
+            Might require an item to start the progress and might produce a new item.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.IsActive">
+            <summary>
+            Should the object be used by actors.
+            Set with <see cref="M:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.SetIsActive(System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.InputSlotActivities">
+            <summary>Activity to store an item into <see cref="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.InputSlots"/>.</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.OutputSlotActivities">
+            <summary>Activity to retreive an item from <see cref="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.OutputSlots"/>.</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.ProcessingTime">
+            <summary>
+            Configured time to complete one cycle of work when fully manned.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.currentCycleProgress">
+            <summary>If null no cycle is active right now.</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.IsCurrentlyInCycle">
+            <summary>Is there is an ongoing cylce to finish?</summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.CurrentCycleProgress">
+            <summary>
+            Relative progress of current work cycle, in [0,1]
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.DidMakeProgressThisTick">
+            <summary>
+            Updated during tick to indicate whether progress was made.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjectTypes.ProgressStations.ProgressStation.TickProgress">
+            <summary>
+            Returns true if progress was made.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ITimeLine.Random01">
+            <summary>
+            Random value between 0.0 and 1.0.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.ITimeLine.Add(EMT.Core.TickTime,System.Action{EMT.Core.Simulation})">
+            <summary>
+            Execute the given action at the given point in time.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.ITimeLine.Add(EMT.Core.TickTime,EMT.Core.TickTime,System.Action{EMT.Core.Simulation})">
+            <summary>
+            Executes the action at startTime or immediat when current time is between startTime and endTime (inclusive).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.ITimeLine.Add(EMT.Core.TickTime,EMT.Core.TickSpan,System.Action{EMT.Core.Simulation})">
+            <summary>
+            Executes the action at startTime or immediat when current time is within the duration.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Trackers.ITrackerDef">
+            <summary>
+            Trackers can be specified by mods to track any kind of simulation state represented as whole number.
+            Trackers are polled regularly to update (but maybe not every tick)
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Trackers.ItemMaintenanceTracker">
+            <summary>
+            a special tracker for items that need maintenance
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Trackers.TrackerList">
+            <summary>
+            Holds all the trackers (created on construction based on defs) and updates them regularly.
+            </summary>
+        </member>
+        <member name="E:EMT.Core.Trackers.TrackerList.OnUpdate">
+            <summary>
+            Called after every update, unconditionally.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Pathfinding.FloodFillPathfinding">
+            <summary>
+            Allows users of the class to create/remove target points for arbitrary positions on the grid.
+            Target points are reference counted: creating a target point for a known position won't create a new one and share the existing one instead.
+            Each target point stores a distance value in each reachable cell, allowing to find the best path towards it by examining a cell and its neighbours.
+            Distance maps are updated step-wise each Tick instead of instantly, so we can easily control the amount of processing work during a single Tick.
+            Whenever the map changes, Invalidate must be called so all target points update properly.
+            <para/>
+            Note: with the current implementation, invalidating always restarts the floodfilling even if it is still in progress.
+            if invalidate happens at high frequency for some reason, cells far from target points will then not be updated properly!
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.CreateTargetPoint(EMT.Core.GridPosition)">
+            <summary>
+            Creates a new target point at the specified position, or reuses an existing one and increases its refcount.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.RemoveTargetPoint(EMT.Core.GridPosition)">
+            <summary>
+            Removes the target point at the specified position, if its refcount reaches zero.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Search.Pathfinding.FloodFillPathfinding.UpdateIncrementalMilliseconds">
+            <summary>
+            soft time limit for UpdateIncremental, AFTER which processing stops.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.UpdateIncremental">
+            <summary>
+            Continues updating distance maps for target points, but does not guarantee everything is up to date. use UpdateFull for that.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.Invalidate">
+            <summary>
+            Makes all existing target points update their distance maps.
+            Must be called whenever there's a change to the level that affects pathfinding.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.UpdateFull">
+            <summary>
+            Force a complete update for all currently existing target points.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.GetDistance(EMT.Core.GridPosition,EMT.Core.GridPosition)">
+            <summary>
+            Returns distance between the specified points, or int.MaxValue if there exists no target point at the specified target location.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.FloodFillPathfinding.GetMoves(EMT.Core.GridPosition,EMT.Core.GridPosition,System.Collections.Generic.List{EMT.Core.GridTransform})">
+            <summary>
+            Find positions adjacent to 'from' that are closest to 'to'.
+            can be more than one, so returns results in a list.
+            Result will be empty if there's no known path.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Pathfinding.GridPathfinding">
+            <summary>
+            Searches a path over the <see cref="T:EMT.Core.Search.Pathfinding.PathfindingGrid"/>.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.GridPathfinding.GetMinimumCost(EMT.Core.GridTransform,EMT.Core.GridTransform)">
+            <summary>
+            Calculates the minimum cost required to move from a to b.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.GridPathfinding.TryGetPath(EMT.Core.GridTransform,EMT.Core.GridTransform,EMT.Core.ImmutableList{EMT.Core.Search.Pathfinding.GridPathfinding.Step}@)">
+            <summary>
+            Find the shortest path with turning.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.GridPathfinding.SearchNode.Get(System.UInt32,EMT.Core.Search.Pathfinding.GridPathfinding.Step,EMT.Core.ImmutableList{EMT.Core.Search.Pathfinding.GridPathfinding.Step},EMT.Core.ImmutableList{EMT.Core.Search.Pathfinding.GridPathfinding.Step})">
+            <summary>
+            Get a cached node or create a new one.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Pathfinding.GridPathfinding.SearchNode.Release(EMT.Core.Search.Pathfinding.GridPathfinding.SearchNode)">
+            <summary>
+            Gives the node back. Don't use it afterwards!
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Pathfinding.GridPathfindingCosts">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:EMT.Core.Search.Pathfinding.GridPathfindingCosts.move">
+            <summary>
+            Cost for moving from one cell to another adjecent one.
+            </summary>
+        </member>
+        <member name="F:EMT.Core.Search.Pathfinding.GridPathfindingCosts.turn">
+            <summary>
+            Cost for turning 90 degree left or right.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Pathfinding.CellBlock">
+            <summary>
+            Blocking flags of a cell. <see cref="T:EMT.Core.Search.Pathfinding.PathfindingGrid"/>
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Pathfinding.PathfindingGrid">
+            <summary>
+            A simple grid which holds blocking information on grid cells.
+            Supports cells and edges.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GOAP.GoapAction">
+            <summary>
+            A goap action definition.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GOAP.GoapSearch">
+            <summary>
+            Searches through a Goap graph. Allows searching for more than one result.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GOAP.GoapSearcher">
+            <summary>
+            Definition of the search space.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GOAP.GoapState">
+            <summary>
+            A world state, represented by booleans and their name.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.NodeState`2">
+            <summary>
+            A simple tuple for passing values.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GraphSearch`3">
+            <summary>
+            A* as the name says.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.GraphSearch`3.NodeList">
+            <summary>
+            A simple readonly single linked list.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.MinHeap`1">
+            <summary>
+            A min-heap which allows to remove any element in O(log(n)).
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeap`1.ItemsUnsorted">
+            <summary>
+            Returns all elements currently contained in the heap in unsorted order.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeap`1.IsEmpty">
+            <summary>
+            Are there still items on the heap?
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeap`1.Capacity">
+            <summary>
+            The size of the internal array.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.Clear">
+            <summary>
+            Remove all items.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.Add(`0)">
+            <summary>
+            Add one item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.Peek">
+            <summary>
+            Get min item without removing it.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.Extract">
+            <summary>
+            Remove the first item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.Extract(`0@)">
+            <summary>
+            Extract min value if "value" is bigger.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.SiftUp(System.Int32)">
+            <summary>
+            Move the item up the tree if smaller. (in direction of root)
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeap`1.SiftDown(System.Int32)">
+            <summary>
+            Move the item down the tree if bigger.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.MinHeapDictionary`2">
+            <summary>
+            A min-heap which allows to remove any element in O(log(n)).
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.MinHeapDictionary`2.KeyValue">
+            <summary>
+            A key-value pair.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeapDictionary`2.ItemsUnsorted">
+            <summary>
+            Returns all elements currently contained in the heap in unsorted order.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeapDictionary`2.IsEmpty">
+            <summary>
+            Are there still items on the heap?
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.MinHeapDictionary`2.Capacity">
+            <summary>
+            The size of the internal array.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Clear">
+            <summary>
+            Remove all items.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Add(`0,`1)">
+            <summary>
+            Add one item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Add(EMT.Core.Search.MinHeapDictionary{`0,`1}.KeyValue)">
+            <summary>
+            Add one item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.TryGetValue(`0,`1@)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item with given index from the heap. Returns the removed item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Remove(`0)">
+            <summary>
+            Try remove the value from the heap. Returns true if the key existed.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Remove(`0,`1@)">
+            <summary>
+            Try remove the value from the heap. Returns true if the key existed.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Peek">
+            <summary>
+            Get min item without removing it.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.Extract">
+            <summary>
+            Remove the first item.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.SiftUp(System.Int32)">
+            <summary>
+            Move the item up the tree if smaller. (in direction of root)
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.MinHeapDictionary`2.SiftDown(System.Int32)">
+            <summary>
+            Move the item down the tree if bigger.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.PathfindingSearchNode">
+            <summary>
+            To be used with <see cref="T:EMT.Core.Search.Searcher`1"/>.
+            Unused right now!
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.ISearchNode`1">
+            <summary>
+            A node in a graph to search through.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.ISearchNode`1.Cost">
+            <summary>
+            The total cost of this node.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Search.ISearchNode`1.TargetReached">
+            <summary>
+            Returns true, if this is a final node.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.ISearchNode`1.GetNeighbours(System.Collections.Generic.List{EMT.Core.Search.ISearchNode{`0}})">
+            <summary>
+            Returns all neighbours.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Searcher`1">
+            <summary>
+            A class to search through <seealso cref="T:EMT.Core.Search.ISearchNode`1"/>s.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Search.Searcher`1.MergeSortItem">
+            <summary>
+            Keeps MinHeap small.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Search.Searcher`1.Search(System.Collections.Generic.IEnumerable{EMT.Core.Search.ISearchNode{`0}})">
+            <summary>
+            Search for the lowest cost final node.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.StorageOverview">
+            <summary>
+            An overview of all storages for a specific item type.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.ItemDef">
+            <summary>
+            The item for which this overview is for.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.MaxTotalCount">
+            <summary>Amount of all (full and empty) slots for this item type.</summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.TotalCount">
+            <summary>
+            The total amount of item available for emergencies.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.FreeSlotCount">
+            <summary>Free slots.</summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.ItemSlots">
+            <summary>
+            All item slots of <see cref="T:EMT.Core.SmartObjects.SmartObjectType"/> which can contain the item.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.FreeSlots">
+            <summary>
+            All slots which are currently free.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.StorageOverview.FilledSlots">
+            <summary>
+            All slots in StorageObjects which are currently filled.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.StorageOverview.Create(System.Int32)">
+            <summary>Creates amount of items in some empty storage.</summary>
+            <returns>Returns the real created amount.</returns>
+        </member>
+        <member name="M:EMT.Core.StorageOverview.Destroy(System.Int32)">
+            <summary>Destroys the given amount of items.</summary>
+            <returns>Returns the amount really being destroyed.</returns>
+        </member>
+        <member name="T:EMT.Core.ProfessionInfo">
+            <summary>
+            This is a global controller for professions.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.Def">
+            <summary>The profession for which are infos collected.</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.TotalActorCount">
+            <summary>Number of actors of <see cref="P:EMT.Core.ProfessionInfo.Def"/> profession.</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.HiringUpToCount">
+            <summary>Up to which count is hiring allowed?</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.CanHire">
+            <summary>Can more actors be hired?</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.IdleActorCount">
+            <summary>
+            Number of actors not doing anything.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.EmergencyActorCount">
+            <summary>
+            Number of actors assigned to emergencies.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.DayShiftActorCount">
+            <summary>Number of actors assigned to day shift.</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.NightShiftActorCount">
+            <summary>Number of actors assigned to day night.</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.OccupiedActorCount">
+            <summary>Number of actors doing anything (not on idle).</summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.DesiredMannedWorkCount">
+            <summary>
+            Number of actors that should work.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.MannedWorkCount">
+            <summary>
+            Number of actors actually working.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.UnmannedWorkCount">
+            <summary>
+            Number of unmanned works.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.Actors">
+            <summary>
+            All <see cref="T:EMT.Core.Actors.Actor"/>s of the profession <see cref="P:EMT.Core.ProfessionInfo.Def"/>.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.ProfessionInfo.Works">
+            <summary>
+            All <see cref="T:EMT.Core.SmartObjects.SmartObject"/>s supporting the profession <see cref="P:EMT.Core.ProfessionInfo.Def"/>.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.ProfileHelper">
+            <summary>
+            Simple profiling helper, allowing us to show some profiling info in the cheat menu.
+            Results are updated/smoothed after leaving the outermost region.
+            <para/>
+            Usage: using (ProfileHelper.Region("ThingIWantToProfile")) { ... thing to be profiled ... }
+            <para/>
+            Or use ProfileHelper.BeginRegion("bla") and ProfileHelper.EndRegion()
+            </summary>
+        </member>
+        <member name="T:EMT.Core.EntityAttribute">
+            Indicate, that this class has an ID.
+        </member>
+        <member name="M:EMT.Core.Rooms.IRoomDefExtensions.GetTags(EMT.Core.Rooms.IRoomDef)">
+            <summary>
+            Returns tags defined on the room def, including special tags (id, inside/outside)
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Rooms.RoomGrid.GetUpdatablePositions(EMT.Core.GridPosition,EMT.Core.GridPosition,EMT.Core.Rooms.IRoomDef)">
+            <summary>Returns all positions, which will change, when SetRoom is called.</summary>
+        </member>
+        <member name="M:EMT.Core.Rooms.RoomGrid.SetRoom(EMT.Core.GridPosition,EMT.Core.GridPosition,EMT.Core.Rooms.IRoomDef,System.Collections.Generic.List{EMT.Core.GridPosition})">
+            <summary>
+            Sets the specified room for all cells in the given area.
+            Adds changes made to the output list, if not null.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.ISmartObjectWork.CanWork(EMT.Core.Actors.Actor)">
+            <summary>Shall working actors carry on working?</summary>
+            <param name="actor">If null, should reflect if the object has work in general.</param>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.ISmartObjectWork.GetFreeActivity(EMT.Core.Actors.Actor)">
+            <summary>Returns an activity if the work needs more help.</summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.ISmartObjectTypeDef.Create(EMT.Core.SmartObjects.SmartObject,System.Collections.Generic.List{EMT.Core.PropertyGrids.CellProperty},EMT.Core.SmartObjects.SmartObjectTypeData)">
+            Should create a SmartObjectType instance that belongs to the given smartObject.
+            outCellProperties can be filled with additional cell properties created by the SmartObjectType.
+            data is the serializable savegame data of the SmartObjectType instance.
+        </member>
+        <member name="T:EMT.Core.SmartObjects.ISmartObjectDef">
+            A SmartObject is a static object, that offers actions to actors.
+        </member>
+        <member name="M:EMT.Core.SmartObjects.ISmartObjectDef_Extensions.CalculateBuildPivotOffset(EMT.Core.SmartObjects.ISmartObjectDef)">
+            <summary>
+            offset of the pivot that should be used when placing the object
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SmartObjects.SmartObject">
+            <summary>
+            A SmartObject is a static object, that offers actions to actors.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjects.SmartObject.Profession">
+            <summary>
+            The profession this object is supposed to work for.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.SmartObjects.SmartObject.TimeInExistence">
+            <summary>How many ticks have elapsed since this object was built?</summary>
+        </member>
+        <member name="T:EMT.Core.SmartObjects.SmartObjectList">
+            <summary>
+            Contains all <see cref="T:EMT.Core.SmartObjects.SmartObject"/>s of the simulation.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.SmartObjectList.CanCreate(EMT.Core.SmartObjects.ISmartObjectDef,EMT.Core.GridTransform,System.Collections.Generic.HashSet{EMT.Core.PropertyGrids.CellProperty})">
+            <summary>Checks if all required dependency can be resolved.</summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.SmartObjectList.Add(EMT.Core.SmartObjects.SmartObject)">
+            <summary>
+            Add a new smart-object to the list.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.SmartObjectList.CanRemove(EMT.Core.SmartObjects.SmartObject)">
+            <summary>Checks if the SmartObject is a dependency for other objects.</summary>
+        </member>
+        <member name="M:EMT.Core.SmartObjects.SmartObjectList.Remove(EMT.Core.SmartObjects.SmartObject)">
+            <summary>
+            Remove an existing smart-object from the list.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.ITicker`1">
+            The template parameter allows you to specify the data the tick can work with (e.g. a <see cref="T:EMT.Core.ITicker`1"/> for Needs will be ticked there and operates on the resp. subneed)
+            IMPORTANT: events have to take care for themselves when to trigger(arbitrary conditions are therefore possible)
+        </member>
+        <member name="T:EMT.Core.ISimulationProvider">
+            <summary>
+            All objects provide the simulation, such that in FSX all commands may do something global (e.g. add a status-effect to everybody in HQ.)
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SimulationProvider">
+            <summary>
+            Convenience default implementation of <see cref="T:EMT.Core.ISimulationProvider"/>.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.INumberProvider`1">
+            <summary>
+            Provides the primary number associated with the context. E.g. the value of a sub-need or the level of a skill.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EMT.Core.Extensions.IEnumerableExtensions.Shuffled``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            Shuffels the list using the given Random.
+        </member>
+        <member name="M:EMT.Core.Extensions.IEnumerableExtensions.RandomElementOrDefault``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            Shuffels the list using the given Random.
+        </member>
+        <member name="M:EMT.Core.Extensions.ListExtensions.Swap``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            Swaps the value of 2 indices.
+        </member>
+        <member name="M:EMT.Core.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0},System.Random)">
+            Shuffels the list using the given Random.
+        </member>
+        <member name="T:EMT.Core.Extensions.ObservableList`1">
+            <summary>
+            A <see cref="T:System.Collections.Generic.IList`1"/> which raises events when items are added or removed.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.ImmutableList`1">
+            <summary>
+            An immutable list implementation.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.IScenarioDef.ApplyModifications">
+            <summary>
+            Needs to be called before the scenario is started/loaded.
+            Allows the scenario to do the same actions like a mod can do.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.IScenarioDef.ApplicantTimeout">
+            <summary>Amount of time until applicant disappears.</summary>
+        </member>
+        <member name="P:EMT.Core.IScenarioDef.FireProtectionTime">
+            <summary>Amount of time, before an actor can befired again.</summary>
+        </member>
+        <member name="T:EMT.Core.IDef">
+            Base interface for all definitions.
+        </member>
+        <member name="P:EMT.Core.IDef.ID">
+            Unique id of the definition.
+        </member>
+        <member name="P:EMT.Core.Definitions.ShiftTickOffset">
+            <summary>offset from midnight to when the day shift begins</summary>
+        </member>
+        <member name="P:EMT.Core.Definitions.TicksPerShift">
+            <summary>number of ticks per shift</summary>
+        </member>
+        <member name="M:EMT.Core.Definitions.GetShiftNumber(EMT.Core.TickTime)">
+            <summary>
+            calculates shift number for specified time, which should be positive.
+            period from beginning midnight to first day shift start is 0.
+            first day shift of simulation is 1.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Definitions.TicksToDays(System.Int64)">
+            <summary>
+            convert tick count to a float where 1.0 equals 1 in-game day
+            </summary>
+        </member>
+        <member name="T:EMT.Core.ITargetPointCellProperty">
+            <summary>
+            Cell properties with this interface generate target points for floodfill thing.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.ActivitySearcher">
+            <summary>
+            Searches an appropriate activity for an actor.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.ActivitySearcher.FindNearest``1(System.Collections.Generic.IEnumerable{``0},EMT.Core.GridPosition)">
+            <summary>
+            Find nearest reachable cell property in input.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.SimulationState">
+            <summary>
+            Simulation can be in various different states. When running, everything ticks/simulates normally.
+            In the other states, the user has to provide/confirm some info to proceed. These states map to various ui windows that need to be displayed.
+            </summary>
+            <remarks>
+            0 (Running) is the only state where the game progresses in time
+            Positive values are temporary values and will go back to running eventually.
+            Negative values are final states and will never be set to something different.
+            </remarks>
+        </member>
+        <member name="T:EMT.Core.CameraState">
+            <summary>
+            not actually used by the simulation, but saved in simulation data as well ..
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Simulation">
+            <summary>
+            Holder of all simulation relevant instances.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.RandomSeed">
+            <summary>
+            A random seed, might be used for visuals.
+            Each new simulation will have a newly generated random one.
+            </summary>
+        </member>
+        <member name="E:EMT.Core.Simulation.OnSmartObjectEvent">
+            <summary>
+            Event raised by various smart object types (hiring, ...). Type of second argument depends on the smart object type.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.NotifySmartObjectEvent(EMT.Core.SmartObjects.SmartObjectType,System.Object)">
+            <summary>
+            Instantly invokes OnSmartObjectEvent.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Simulation.CoreTutorialEvent">
+            <summary>
+            Defines types of events that trigger one of the built-in tutorials (ie not for mods!)
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.CameraState">
+            <summary>
+            Not actually used by simulation - but stored in savegame!
+            If null, it should be initialized to something useful.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.DoAtEndOfTick(System.Action)">
+            Do an action at the end of the tick function. Useful when certain stuff cant be done immediately (eg. because iterating over container).
+        </member>
+        <member name="P:EMT.Core.Simulation.Time">
+            <summary>
+            The current time step of the simulation.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.TimeInDays">
+            <summary>
+            Current simulation time in days as float ..
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.StartOfNextWorkWeek">
+            <summary>start of first new shift of a week</summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.Professions">
+            <summary>
+            Info about all crew professions (not visitors!)
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.PauseRequestCounter">
+            <summary>
+            code can increment/decrement to request pause
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Simulation.IsAutoPaused">
+            <summary>
+            True if the simulation is auto-paused for any reason.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.HasAvailableVehiclesForEmergency(EMT.Core.Emergencies.IEmergencyDef)">
+            <summary>
+            Determines if player has at least 1 vehicle for each of the professions required by the emergency.
+            Uses asset requirements defined on emergency to figure that out - primary profession asset (ie with name same as ProfessionID) is used to figure that out.
+            Vehicles need to be in HQ, fully built, and in the garage state.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.Tick">
+            <summary>
+            Let it tick, YEAH BABY!
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.EnterBuildMode">
+            <summary>
+            Returns true if build mode is now active.
+            Also true if already was.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.ExitBuildMode">
+            <summary>
+            Returns true if build mode is no longer active.
+            Also true if it wasn't active anyway.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_CanCreate(EMT.Core.SmartObjects.ISmartObjectDef,EMT.Core.GridTransform)">
+            <summary>
+            Is a new SmartObject creatable at the given transform?
+            Conditions:
+            - cost
+            - unlocked
+            - blocked by already built objects
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_Create(EMT.Core.SmartObjects.ISmartObjectDef,EMT.Core.GridTransform)">
+            <summary>
+            Try create a new SmartObject at the given transform.
+            Also look at <see cref="M:EMT.Core.Simulation.SmartObject_CanCreate(EMT.Core.SmartObjects.ISmartObjectDef,EMT.Core.GridTransform)"/>
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_CanDestroy(EMT.Core.SmartObjects.SmartObject)">
+            <summary>
+            Is the SmartObject destroyable?
+            Conditions:
+            - object already destroyed
+            - other objects depend on it
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_Destroy(EMT.Core.SmartObjects.SmartObject)">
+            <summary>Try to destory the given SmartObject.</summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_CanMove(EMT.Core.SmartObjects.SmartObject)">
+            <summary>
+            Can this object be moved at all?
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Simulation.SmartObject_CanMove(EMT.Core.SmartObjects.SmartObject,EMT.Core.GridTransform)">
+            <summary>
+            Can this object be moved to the specified transform?
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Level">
+            <summary>
+            Contains static objects (which only the player may alter).
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Level.GetNumAvailableCells">
+            <summary>
+            Calculates total amount of cells available, based on unlocked lots.
+            Overlapping lots are treated correctly; a cell is never counted twice.
+            </summary>
+        </member>
+        <member name="M:EMT.Core.Level.GetNumInsideCells">
+            <summary>
+            Calculates amount of room cells that are InsideHQ.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.LevelDerived">
+            <summary>
+            A class for fast look-ups and easier access of instances.
+            </summary>
+        </member>
+        <member name="P:EMT.Core.Walls.Wall.OtherTransform">
+            <summary>The 2nd transform representation of this wall. (opposite edge)</summary>
+        </member>
+        <member name="P:EMT.Core.Walls.Wall.IsRoomBorder">
+            <summary>Is wall on border of a room. (meaing other edge is in a different room)</summary>
+        </member>
+        <member name="T:EMT.Core.GridPosition">
+            <summary>
+            Position on the grid.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.GridTransform">
+            <summary>
+            A 2D matrix without scaling.
+            </summary>
+        </member>
+        <member name="T:EMT.Core.Icon">
+            <summary>A simple typesafe wrapper around a string.</summary>
+        </member>
+        <member name="T:EMT.Core.Money">
+            Represents an amount of money (in euros?).
+        </member>
+        <member name="T:EMT.Core.TickSpan">
+            <summary>
+            Represents an amount of ticks. <seealso cref="T:System.TimeSpan"/>
+            </summary>
+        </member>
+        <member name="T:EMT.Core.TickTime">
+            <summary>
+            Represents a specific point in time. <seealso cref="T:System.DateTime"/>
+            </summary>
+        </member>
+    </members>
+</doc>

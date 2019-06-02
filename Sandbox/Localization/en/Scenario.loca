@@ -1,24 +1,49 @@
-#SandboxName
-Sandbox Mode
+#Berlin_SandboxName
+Sandbox Mode Berlin
 
-#SandboxLocation
+#Berlin_SandboxLocation
 Berlin Sandbox
 
-#SandboxLocationShort
+#Berlin_SandboxLocationShort
 Berlin
 
-#SandboxChallenge
+#Berlin_SandboxChallenge
 A Sandbox :-)
 
-#SandboxDescription
+#Berlin_SandboxDescription
 A sandbox scenario to plan the HQ of your dreams!
 
-Initial Funding :  100.000.000
+Initial Funding :  10.000.000
 Map size        : 60x60
 Unlocks         : All
 Vehicle Damage  : Off
 Items break     : Off
 City Grants     : 5 
 
-#SandboxDuration
+#Berlin_SandboxDuration
+Endless
+
+#SanFran_SandboxName
+Sandbox Mode San Francisco
+
+#SanFran_SandboxLocation
+San Francisco
+
+#SanFran_SandboxLocationShort
+San Francisco
+
+#SanFran_SandboxChallenge
+A Sandbox :-)
+
+#SanFran_SandboxDescription
+A sandbox scenario to plan the HQ of your dreams!
+
+Initial Funding :  10.000.000
+Map size        : 60x60
+Unlocks         : All
+Vehicle Damage  : Off
+Items break     : Off
+City Grants     : 5 
+
+#SanFran_SandboxDuration
 Endless
