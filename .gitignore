@@ -1,2 +1,5 @@
 /MainMod
 *.vdf
+Test.fsx
+TestTools.fsx
+/*_Dev
