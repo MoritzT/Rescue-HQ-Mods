@@ -1,0 +1,13 @@
+#PersonalLocker_GhostBuster_Name
+GhostBuster Lockers
+
+#PersonalLocker_GhostBuster_Description
+A locker used by GhostBusters.
+GhostBusters must pass this station before dispatch.
+Adds +2 to GhostBusters to the hiring cap.
+
+#HiringDeskGhostBuster_Name
+GhostBuster Hiring Station
+
+#HiringDeskGhostBuster_Description
+Assign a GhostBuster crew to find more GhostBusters.
