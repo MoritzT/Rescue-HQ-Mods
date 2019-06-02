@@ -2,7 +2,6 @@
 open EMT.Modding
 
 Def.Scenario.Update "Berlin_Original" (fun x -> 
-Def.Scenario.
     {x with 
         Modifications = fun () ->
             x.Modifications () 
