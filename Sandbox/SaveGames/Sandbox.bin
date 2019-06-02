@@ -1,0 +1,3272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modNames>
+    <string>mainmod</string>
+    <string>sandbox</string>
+  </modNames>
+  <state>Running</state>
+  <scenario>Sandbox</scenario>
+  <time>2435</time>
+  <notifications>
+    <list />
+  </notifications>
+  <actors>
+    <ids next="22" />
+    <instances>
+      <ActorData>
+        <id>1</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>23.472542783335353</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="19" Y="12" dX="-1" dY="0" />
+        <fullName>Leeanna Boice</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.68748114010667483</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.91060669810683648</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.91462075581918822</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.1601237857631466</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1841832247591912</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.51787469221069515</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.286735985561617</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterForestFire</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>6</timeLeft>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>1314118086</randomInt>
+          <uniformDef>FireFighterUniform_EU_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-4</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female5</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>2</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>15.87289240473109</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="3" Y="35" dX="0" dY="1" />
+        <fullName>Jennifer Bennefield</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.96283733843026553</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.95557861765320118</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.88307239860835185</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.0525301722225819</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1646386351374569</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.59966871804431776</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.132153707152304</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>15</timeLeft>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>717974665</randomInt>
+          <uniformDef>FireFighterUniform_EU_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female4</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>3</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>18.069239350204139</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="2" Y="17" dX="0" dY="-1" />
+        <fullName>Heriberto Moten</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.68095323847651168</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.97872632099867363</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.81597806417593266</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.1849174109320184</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.0661693646983512</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.58301983303420524</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.436375569755386</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>31</timeLeft>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>747259260</randomInt>
+          <uniformDef>FireFighterUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male3</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>4</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>22.337680834347218</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="7" Y="40" dX="1" dY="0" />
+        <fullName>Kirk Daye</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.13313187152758793</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.0061942746114578</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.99057404888748468</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.0283310333501638</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1517789075029397</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.68015885501996853</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.965680185689441</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="MovingStateData">
+          <startTransform X="6" Y="40" dX="1" dY="0" />
+          <endTransform X="7" Y="40" dX="1" dY="0" />
+          <timeInState>1</timeInState>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>695390650</randomInt>
+          <uniformDef>FireFighterUniform_US_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-5</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male3</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>5</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>18.939092496400981</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="0" Y="42" dX="0" dY="1" />
+        <fullName>Jazmin Avera</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.5693143320126991</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.94536522365104214</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.92836230306739109</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.1581550373603793</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.0548834108174647</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.54665765220498841</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.910933759487669</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="MovingStateData">
+          <startTransform X="0" Y="41" dX="0" dY="1" />
+          <endTransform X="0" Y="42" dX="0" dY="1" />
+          <timeInState>5</timeInState>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>911659714</randomInt>
+          <uniformDef>FireFighterUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-3</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Female2</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>6</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>16.869701630414028</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="2" Y="17" dX="0" dY="1" />
+        <fullName>Aurelio Schwalb</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.88993640238881877</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.0059811734776543</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.84100984920260058</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.1829469732963647</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.2168231320748626</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.54871965025847114</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.010917420969772</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PolicePursuitDriver</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>12</timeLeft>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1776580860</randomInt>
+          <uniformDef>PoliceUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-3</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Male2</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>7</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>14.890530764297502</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="0" Y="6" dX="0" dY="1" />
+        <fullName>Merri Bennefield</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.58891583773722678</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.96403873385729133</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.87391034755968289</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.0402360401406532</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1421461252329101</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.627629457062695</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.32210876574838</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="MovingStateData">
+          <startTransform X="0" Y="5" dX="0" dY="1" />
+          <endTransform X="0" Y="6" dX="0" dY="1" />
+          <timeInState>2</timeInState>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>409150516</randomInt>
+          <uniformDef>PoliceUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>8</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>13.397256726302929</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="11" Y="6" dX="-1" dY="0" />
+        <fullName>Howard Jiang</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.78056598165098856</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>0.84457726798842092</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.83975472076250057</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.2100254493915075</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.0624742942324665</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.70077233315370913</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.887365463602993</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>6</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>33</timeLeft>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1846352670</randomInt>
+          <uniformDef>PoliceUniform_US_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-5</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male2</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>9</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>39.872325865337409</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="2" Y="46" dX="-1" dY="0" />
+        <fullName>Andrew Bouldin</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>3</level>
+          <wageMinMaxRatio>0.44134807281258892</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>0.88907863279905508</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.89231747268737038</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.0283196409467645</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1653796790109334</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.69588300809893255</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.582511894676141</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel3</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl3</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLeader</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="MovingStateData">
+          <startTransform X="2" Y="46" dX="-1" dY="0" />
+          <endTransform X="1" Y="46" dX="-1" dY="0" />
+          <timeInState>0</timeInState>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1866060621</randomInt>
+          <uniformDef>MedicUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-3</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Male1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>10</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>26.251101286965611</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="0" Y="9" dX="0" dY="1" />
+        <fullName>Ian Murguia</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.75391646742537455</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>1.0089567498499945</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.92500822555901963</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.1771762177344713</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1201221211544288</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.62866748703936748</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.081278754901737</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="IdleStateData">
+          <timeLeft>39</timeLeft>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1591193484</randomInt>
+          <uniformDef>MedicUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-3</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male3</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>11</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>29.042532231358091</pendingWage>
+        <mode xsi:type="RandomWalkActorModeData" />
+        <transform X="3" Y="30" dX="0" dY="1" />
+        <fullName>Dorla Fogal</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.51507745614046108</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>0.93246662615126563</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>0.86067021069544447</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.0635264970760863</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.1312685734375181</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.54385414335945637</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.137389147252492</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="MovingStateData">
+          <startTransform X="3" Y="29" dX="0" dY="1" />
+          <endTransform X="3" Y="30" dX="0" dY="1" />
+          <timeInState>1</timeInState>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>2138096508</randomInt>
+          <uniformDef>MedicUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Day</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>RandomWalk</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>12</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Heriberto Baldwin</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.76476377098111614</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.4160840322393384</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.3788325105711783</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.4282800822376647</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.5612425191804966</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.81499285527875309</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.868858403465179</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterCritical</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>202239603</randomInt>
+          <uniformDef>FireFighterUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-2</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Male4</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>13</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Blaine Marmol</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.23185465914749293</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.5703644399448133</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.4381186931588121</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.5263124333077633</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.4617612167275331</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.76290233866118928</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>12.272574711717933</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>2055275825</randomInt>
+          <uniformDef>FireFighterUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-1</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male2</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>14</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Ellsworth Dingman</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.15864325135883095</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.590578980744993</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.4716529395781517</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.4232828525660945</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.50188259447137</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.83157723022836127</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.721236965023557</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>773754264</randomInt>
+          <uniformDef>FireFighterUniform_US_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male2</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>15</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Keira Klug</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.40659555439213085</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.4102910150876693</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.349375047233391</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.5342648631313187</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.599367030868571</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.7591291849930254</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.306396513854338</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>739967187</randomInt>
+          <uniformDef>FireFighterUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-1</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>16</id>
+        <def>FireFighter</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Maxie Behnke</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.7811927673319321</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.4468519954283965</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.352230956105418</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.553146653480058</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.5969292397322736</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.983580640664576</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>14.210408439026406</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>FireFighterLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>1454612393</randomInt>
+          <uniformDef>FireFighterUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-1</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>17</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Jeffie Mccowan</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.43487220464035503</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.4473190400093416</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.3864041853649374</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.442224826935411</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.4549192185495603</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.84924513030899929</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>11.378625499260902</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceMarksman</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>644659769</randomInt>
+          <uniformDef>PoliceUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-3</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>18</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Nathanial Hadley</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.20386482272477113</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.5980828260117597</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.3618507034915548</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.4939314890816489</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.4940899658181193</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.80476453031307293</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.551337746694376</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1406415069</randomInt>
+          <uniformDef>PoliceUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-1</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Male3</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>19</id>
+        <def>Police</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Ruthann Josephson</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>1</level>
+          <wageMinMaxRatio>0.535931966517089</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>Food</def>
+            <value>1.5977988259911533</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.3239357472059763</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.4766858724960525</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.5238496180926682</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.92430331416300648</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.775567423913426</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>8</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>PoliceLvl1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>2115159557</randomInt>
+          <uniformDef>PoliceUniform_US_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-1</headStyleDef>
+          <skinColorDef>Black</skinColorDef>
+          <hairStyleDef>HairStyle_Female1</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>20</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Jo Seagraves</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>3</level>
+          <wageMinMaxRatio>0.58487779953744157</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>1.5808630969341209</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.4196700217310478</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.4930988554071165</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.4818202805812566</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.81611230077644448</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>13.828575210100308</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel3</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl3</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLeader</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Female</gender>
+        <appearanceData>
+          <randomInt>1656486894</randomInt>
+          <uniformDef>MedicUniform_EU_F</uniformDef>
+          <headStyleDef>HeadStyle_Female01-3</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Female4</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>21</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Darren Moten</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.47249429229297407</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>1.4998767146429404</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.4149546504106907</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.5257917447327598</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.4380198822259995</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.76735612228527483</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>13.558462568818808</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>1886646623</randomInt>
+          <uniformDef>MedicUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-2</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male3</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+      <ActorData>
+        <id>22</id>
+        <def>Medic</def>
+        <isFired>false</isFired>
+        <pendingWage>0</pendingWage>
+        <mode xsi:type="ShiftOverActorModeData" />
+        <transform X="1" Y="1" dX="1" dY="0" />
+        <fullName>Kristopher Isley</fullName>
+        <fireProtectionTime>41065</fireProtectionTime>
+        <level>
+          <level>2</level>
+          <wageMinMaxRatio>0.87551608675882042</wageMinMaxRatio>
+          <xp>0</xp>
+        </level>
+        <traits>
+          <TraitData>
+            <def>Food</def>
+            <value>1.5511405908330067</value>
+          </TraitData>
+          <TraitData>
+            <def>Bladder</def>
+            <value>1.3144073475701583</value>
+          </TraitData>
+          <TraitData>
+            <def>Rest</def>
+            <value>1.5993107796369639</value>
+          </TraitData>
+          <TraitData>
+            <def>Relaxation</def>
+            <value>1.5114017377852471</value>
+          </TraitData>
+          <TraitData>
+            <def>Hygiene</def>
+            <value>0.98474639659640684</value>
+          </TraitData>
+          <TraitData>
+            <def>Exhaustion</def>
+            <value>10.494716107144354</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood</def>
+            <value>10</value>
+          </TraitData>
+          <TraitData>
+            <def>PersonalLocker</def>
+            <value>1</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel1</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>ReachedLevel2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicLvl2</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>MedicFirstResponder</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>NotExhausted</def>
+            <value>0</value>
+          </TraitData>
+          <TraitData>
+            <def>Mood_Good</def>
+            <value>0</value>
+          </TraitData>
+        </traits>
+        <state xsi:type="OutSideHqStateData">
+          <remainingTicks>0</remainingTicks>
+        </state>
+        <gender>Male</gender>
+        <appearanceData>
+          <randomInt>612967693</randomInt>
+          <uniformDef>MedicUniform_EU_M</uniformDef>
+          <headStyleDef>HeadStyle_Male01-3</headStyleDef>
+          <skinColorDef>White</skinColorDef>
+          <hairStyleDef>HairStyle_Male4</hairStyleDef>
+        </appearanceData>
+        <itemSlotData />
+        <assignedShift>Night</assignedShift>
+        <overtimeFlag>false</overtimeFlag>
+        <shiftLockedHint>false</shiftLockedHint>
+        <modeImportance>NotOverridable</modeImportance>
+      </ActorData>
+    </instances>
+  </actors>
+  <applicants>
+    <ids next="0" />
+    <available />
+    <hired />
+  </applicants>
+  <emergencies>
+    <ids next="0" />
+    <emergencies />
+    <tracker>
+      <EmergencySuccessCount>0</EmergencySuccessCount>
+      <EmergencyCount>0</EmergencyCount>
+    </tracker>
+  </emergencies>
+  <economy>
+    <currentFunds>99999999</currentFunds>
+    <countOfTakenCityGrants>0</countOfTakenCityGrants>
+    <isCityGrantTaken>false</isCityGrantTaken>
+    <pendingMaintenanceCosts>356</pendingMaintenanceCosts>
+    <pendingWages>0</pendingWages>
+    <tracker>
+      <EmergencyIncome>0</EmergencyIncome>
+      <SmartObjectIncome>0</SmartObjectIncome>
+      <OtherIncome>0</OtherIncome>
+    </tracker>
+  </economy>
+  <reputation>
+    <reputation>0</reputation>
+    <rank>1</rank>
+  </reputation>
+  <level>
+    <rooms>
+      <grid>
+        <RoomGridCellData>
+          <position X="5" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="5" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="5" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="5" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="5" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="6" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="6" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="6" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="6" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="6" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="7" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="7" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="7" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="7" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="7" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="8" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="8" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="8" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="8" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="8" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="9" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="9" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="9" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="9" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="9" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="10" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="10" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="10" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="10" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="10" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="11" Y="7" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="11" Y="8" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="11" Y="9" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="11" Y="10" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="11" Y="11" />
+          <def>Office</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="0" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="1" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="2" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="3" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="4" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="5" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="6" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="7" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="8" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="9" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="10" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="12" Y="11" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="0" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="1" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="2" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="3" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="4" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="5" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="6" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="7" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="8" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="9" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="10" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="13" Y="11" />
+          <def>CorridorGreen</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="14" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="15" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="16" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="17" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="18" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="19" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="20" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="21" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="22" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="23" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="24" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="25" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="26" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="27" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="28" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="29" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="0" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="1" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="2" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="3" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="4" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="5" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="6" />
+          <def>Garage</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="7" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="8" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="9" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="10" />
+          <def>Utility</def>
+        </RoomGridCellData>
+        <RoomGridCellData>
+          <position X="30" Y="11" />
+          <def>Utility</def>
+        </RoomGridCellData>
+      </grid>
+    </rooms>
+    <smartObjects>
+      <ids next="30" />
+      <instances>
+        <SmartObjectData>
+          <id>5</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="15" Y="7" dX="0" dY="-1" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>6</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="18" Y="7" dX="0" dY="-1" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>7</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="21" Y="7" dX="0" dY="-1" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>8</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="24" Y="7" dX="0" dY="-1" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>9</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="16" Y="7" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>10</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="16" Y="8" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>11</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="16" Y="9" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>12</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="14" Y="7" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>13</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="14" Y="8" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>14</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Fire</def>
+          <transform X="14" Y="9" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>15</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="17" Y="7" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>16</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="17" Y="9" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>17</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="17" Y="8" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>18</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="19" Y="9" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>19</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="19" Y="8" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>20</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Police</def>
+          <transform X="19" Y="7" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>21</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="22" Y="7" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>22</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="22" Y="8" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>23</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="22" Y="9" dX="0" dY="-1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>24</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="20" Y="9" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>25</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="20" Y="8" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>26</id>
+          <timeInExistence>905</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>PersonalLocker_Medical</def>
+          <transform X="20" Y="7" dX="0" dY="1" />
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>27</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>MainEntrance</def>
+          <transform X="12" Y="0" dX="1" dY="0" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>28</id>
+          <timeInExistence>935</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="14" Y="5" dX="-1" dY="0" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>935</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>29</id>
+          <timeInExistence>906</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="14" Y="10" dX="-1" dY="0" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>906</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+        <SmartObjectData>
+          <id>30</id>
+          <timeInExistence>792</timeInExistence>
+          <timeLeftUntilFullyBuilt>0</timeLeftUntilFullyBuilt>
+          <def>AutomaticDoor_01</def>
+          <transform X="11" Y="8" dX="1" dY="0" />
+          <type xsi:type="DoorData">
+            <state>Closed</state>
+            <timeInState>792</timeInState>
+          </type>
+          <pendingMaintenanceCosts>0</pendingMaintenanceCosts>
+        </SmartObjectData>
+      </instances>
+    </smartObjects>
+    <walls>
+      <transforms>
+        <GridTransform X="23" Y="7" dX="-1" dY="0" />
+        <GridTransform X="23" Y="8" dX="-1" dY="0" />
+        <GridTransform X="23" Y="9" dX="-1" dY="0" />
+        <GridTransform X="26" Y="7" dX="-1" dY="0" />
+        <GridTransform X="26" Y="8" dX="-1" dY="0" />
+        <GridTransform X="26" Y="9" dX="-1" dY="0" />
+        <GridTransform X="20" Y="7" dX="-1" dY="0" />
+        <GridTransform X="20" Y="8" dX="-1" dY="0" />
+        <GridTransform X="20" Y="9" dX="-1" dY="0" />
+        <GridTransform X="17" Y="7" dX="-1" dY="0" />
+        <GridTransform X="17" Y="8" dX="-1" dY="0" />
+        <GridTransform X="17" Y="9" dX="-1" dY="0" />
+      </transforms>
+    </walls>
+    <unlockedLots>
+      <string>WholeMap</string>
+    </unlockedLots>
+    <pendingLotRunningCosts>0</pendingLotRunningCosts>
+  </level>
+  <objectives>
+    <done />
+    <active />
+  </objectives>
+  <unlocks>
+    <unlocks />
+  </unlocks>
+  <questGiverQueue />
+  <randomSeed>211322521</randomSeed>
+  <triggeredAssistantTutorials />
+  <triggeredCoreTutorialEvents />
+  <triggeredCustomTutorialEvents />
+  <weeklyStatistics>
+    <Score>0</Score>
+    <MoneyGained>35929</MoneyGained>
+    <ReputationGained>0</ReputationGained>
+    <ReputationConvertedIntoMoney>0</ReputationConvertedIntoMoney>
+    <EmergenciesExpired>0</EmergenciesExpired>
+    <EmergenciesAskedForHelp>0</EmergenciesAskedForHelp>
+    <EmergenciesSucceeded>0</EmergenciesSucceeded>
+    <EmergenciesFailed>0</EmergenciesFailed>
+    <SumOfTicksEmergencyWaitedForVehicles>0</SumOfTicksEmergencyWaitedForVehicles>
+    <AmountOfEmergenciesWaitedForVehicles>0</AmountOfEmergenciesWaitedForVehicles>
+  </weeklyStatistics>
+  <statistics>
+    <Score>0</Score>
+    <MoneyGained>0</MoneyGained>
+    <ReputationGained>0</ReputationGained>
+    <ReputationConvertedIntoMoney>0</ReputationConvertedIntoMoney>
+    <EmergenciesExpired>0</EmergenciesExpired>
+    <EmergenciesAskedForHelp>0</EmergenciesAskedForHelp>
+    <EmergenciesSucceeded>0</EmergenciesSucceeded>
+    <EmergenciesFailed>0</EmergenciesFailed>
+    <SumOfTicksEmergencyWaitedForVehicles>0</SumOfTicksEmergencyWaitedForVehicles>
+    <AmountOfEmergenciesWaitedForVehicles>0</AmountOfEmergenciesWaitedForVehicles>
+  </statistics>
+  <smartObjectsFlaggedForBuildFilter />
+  <utcTimeLastSaved>2019-06-01T15:58:34.2587587Z</utcTimeLastSaved>
+</Data>

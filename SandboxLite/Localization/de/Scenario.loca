@@ -1,0 +1,23 @@
+#SandboxLiteName
+Sandbox Lite
+
+#SandboxLiteLocation
+Berlin - Largeallee 10
+
+#SandboxLiteLocationShort
+Berlin
+
+#SandboxLiteChallenge
+- Vermeiden Sie den Bankrott für die Dauer des Szenarios.
+- Erreichen Sie Ziele für zusätzliche Geldmittel und Ansehen.
+
+#SandboxLiteDescription
+Die Standardeinstellung der Berlin-Karte.
+Keine spezifischen Herausforderungen, keine Baueinschränkungen - im Grunde genommen eine Trainingskarte. 
+
+Startfinanzierung      : 100.000
+Kartengröße            : 60x60
+Stadtzuschüsse         : 2 
+
+#SandboxLiteDuration
+5 Wochen (vor dem Endlosmodus)
