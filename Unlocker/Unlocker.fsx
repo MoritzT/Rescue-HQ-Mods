@@ -8,16 +8,14 @@ let unlockAll =
 Def.Scenario.Update "Berlin_Original" (fun x -> 
     {x with 
         Modifications = fun () ->
-            Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
-            Def.Uniform.RemoveAllWithTags ["US"]
+            x.Modifications ()
             unlockAll
     })
 
 Def.Scenario.Update "Berlin_Limited" (fun x -> 
     {x with 
         Modifications = fun () ->
-            Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
-            Def.Uniform.RemoveAllWithTags ["US"]
+            x.Modifications ()
             unlockAll
     })
 
@@ -25,14 +23,16 @@ Def.Scenario.Update "SanFran_Limited" (fun x ->
     {x with 
         Modifications = fun () ->
             Def.SmartObject.RemoveAllWithTags ["EuropeVehicle"]
-            Def.Uniform.RemoveAllWithTags ["EU"]
             unlockAll
+            Def.Uniform.RemoveAllWithTags ["EU"]
+            // x.Modifications ()
     })
 
 Def.Scenario.Update "SanFran_Hard" (fun x -> 
     {x with 
         Modifications = fun () ->
             Def.SmartObject.RemoveAllWithTags ["EuropeVehicle"]
-            Def.Uniform.RemoveAllWithTags ["EU"]
             unlockAll
+            Def.Uniform.RemoveAllWithTags ["EU"]
+            // x.Modifications ()
     })
