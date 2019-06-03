@@ -1,49 +1,92 @@
-#Berlin_SandboxName
-Sandbox Mode Berlin
+#SandboxBerlinName
+V. Berlin Sandbox (all unlocks)
 
-#Berlin_SandboxLocation
-Berlin Sandbox
+#SandboxBerlinLocation
+Berlin - Sandbox 1
 
-#Berlin_SandboxLocationShort
+#SandboxBerlinLocationShort
 Berlin
 
-#Berlin_SandboxChallenge
-A Sandbox :-)
+#SandboxBerlinChallenge
+- Enjoy building :-)
 
-#Berlin_SandboxDescription
-A sandbox scenario to plan the HQ of your dreams!
+#SandboxBerlinDescription
+A big plain map for you to build the base of your dreams.
 
-Initial Funding :  10.000.000
-Map size        : 60x60
-Unlocks         : All
-Vehicle Damage  : Off
-Items break     : Off
-City Grants     : 5 
+Unlocks                       : All
+Vehicle Damage         : Off
+Items break                 : Off
 
-#Berlin_SandboxDuration
-Endless
+City Grants                  : 2 
+Initial Funding             : 100.000.000
 
-#SanFran_SandboxName
-Sandbox Mode San Francisco
+#SandboxBerlinDuration
+5 Weeks (before endless mode)
 
-#SanFran_SandboxLocation
+#SandboxBerlinLiteLocationShort
+Berlin
+
+#SandboxBerlinLiteName
+VI. Berlin Sandbox Revisited
+
+#SandboxBerlinLiteLocation
+Berlin - Sandbox 2
+
+#SandboxBerlinLiteChallenge
+- Sandbox without any unlocks or other modifications
+
+#SandboxBerlinLiteDuration
+5 Weeks (before endless mode)
+
+#SandboxBerlinLiteDescription
+Just a big map for you to play on
+
+City Grants     : 2
+Initial Funding : 100.000
+
+#SandboxSFLocationShort
 San Francisco
 
-#SanFran_SandboxLocationShort
+#SandboxSFName
+VII. Sandbox of SF (all unlocks)
+
+#SandboxSFLocation
+San Francisco - Sandbox Bay
+
+#SandboxSFChallenge
+- Enjoy building :-)
+
+#SandboxSFDuration
+5 Weeks (before endless mode)
+
+#SandboxSFDescription
+A big plain map for you to build the base of your dreams.
+
+Unlocks                       : All
+Vehicle Damage         : Off
+Items break                 : Off
+
+City Grants                  : 2 
+Initial Funding             : 100.000.000
+
+#SandboxSFLiteLocationShort
 San Francisco
 
-#SanFran_SandboxChallenge
-A Sandbox :-)
+#SandboxSFLiteName
+VIII. Sandbox of SF Revisited
 
-#SanFran_SandboxDescription
-A sandbox scenario to plan the HQ of your dreams!
+#SandboxSFLiteLocation
+San Francisco - Sandbox Park
 
-Initial Funding :  10.000.000
-Map size        : 60x60
-Unlocks         : All
-Vehicle Damage  : Off
-Items break     : Off
-City Grants     : 5 
+#SandboxSFLiteChallenge
+- Sandbox without any unlocks or other modifications
 
-#SanFran_SandboxDuration
-Endless
+#SandboxSFLiteDuration
+5 Weeks (before endless mode)
+
+#SandboxSFLiteDescription
+A big plain map, but still a hard mode :-)
+
+City Grants     : 2
+Initial Funding : 80.000
+

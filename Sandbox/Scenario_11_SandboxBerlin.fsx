@@ -1,27 +1,31 @@
 #load "Include.fsx"
 open EMT.Modding
-
+ 
 Def.Scenario.Add {
-    ID = "SanFran_Sandbox"
+    ID = "SandboxBerlin"
     EnableTutorials = No
 
     ApplicantTimeout = Gt.days 1.0
     FireProtectionTime = Gt.weeks 1.0
 
-    Level = "SanFran_Sandbox", ["WholeMap"]
+    Level = "SandboxBerlin", ["WholeMap"]
 
     VehicleRepairRate = Gt.perHour 20.0
 
     EconomySystem = {
-        InitialFunds = 99_999_999
-        AwardedCityGrants = 5
-        MoneyPerCityGrant = 500_000
+        InitialFunds = 100_000_000
+        AwardedCityGrants = 2
+        MoneyPerCityGrant = 150_000
     }
 
     ReputationSystem = {
-        MoneyPerReputation = 1000
+        MoneyPerReputation = 100
         Ranks = [
-            {MaxReputation = 100_000; CityHallPayments = 500_000}
+            {MaxReputation = 600; CityHallPayments = 80_000}
+            {MaxReputation = 1000; CityHallPayments = 100_000}
+            {MaxReputation = 1_300; CityHallPayments = 120_000}
+            {MaxReputation = 1_800; CityHallPayments = 180_000}
+            {MaxReputation = 2_300; CityHallPayments = 220_000}
         ]
     }
 
@@ -33,24 +37,10 @@ Def.Scenario.Add {
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "Police" [Actor.LevelUp ()]
             Hq.Actors.Create "Police" [Actor.LevelUp ()]
-            Hq.Actors.Create "Police" [Actor.LevelUp ()]
-            Hq.Actors.Create "Police" [Actor.LevelUp ()]
-            Hq.Actors.Create "Police" [Actor.LevelUp ()]
-            Hq.Actors.Create "Police" [Actor.LevelUp ()]
-            Hq.Actors.Create "Police" [Actor.LevelUp ()]
             Hq.Actors.Create "Medic" [Actor.LevelUp ();Actor.LevelUp ()]
-            Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-            Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-            Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-            Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-            Hq.Actors.Create "Medic" [Actor.LevelUp ()]
             Hq.Actors.Create "Medic" [Actor.LevelUp ()]
             Hq.Actors.Create "Medic" [Actor.LevelUp ()]
             // Night Shift
@@ -59,25 +49,10 @@ Def.Scenario.Add {
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ();Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
         ]
@@ -729,52 +704,79 @@ Def.Scenario.Add {
     ]    
 
     Modifications = fun () ->
-            // Unlock everything
-            for smartObject in Def.SmartObject |> Seq.toArray do
-                Def.SmartObject.Update smartObject.ID (fun x -> {x with Unlock = None})
+        Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
+        // Unlock everything
+        for smartObject in Def.SmartObject |> Seq.toArray do
+            Def.SmartObject.Update smartObject.ID (fun x -> {x with Unlock = None})
+        
+        // No damage to vehicles
+        for smartObject in Def.SmartObject |> Seq.toArray do
+        match smartObject.Type with
+        // is it a vehicle?
+        | Some (:? VehicleDef as v) ->
+            // update defintion
+            Def.SmartObject.Update smartObject.ID (fun x ->
+                {x with
+                    Type = SmartObjectType.Vehicle
+                        {v with
+                            // update maintenance of vehicle
+                            Maintenance =
+                                {v.Maintenance with
+                                    // nullify damage
+                                    DamageMultiplier = [Above 0, 0.0]
+                                    // never break down
+                                    BreakDownChance = [Above  0.0, 0.0]
+                                }                                    
+                        }
+                })
+        // no -> ignore
+        | _ -> ()
 
-            // Fix for no damage to vehicles
-            for smartObject in Def.SmartObject |> Seq.toArray do
-                match smartObject.Type with
-                // is it a vehicle?
-                | Some (:? VehicleDef as v) ->
-                    // update defintion
-                    Def.SmartObject.Update smartObject.ID (fun x ->
-                        {x with
-                            Type = SmartObjectType.Vehicle
-                                {v with
-                                    // update maintenance of vehicle
-                                    Maintenance =
-                                        {v.Maintenance with
-                                            // nullify damage
-                                            DamageMultiplier = [Above 0, 0.0]
-                                            // never break down
-                                            BreakDownChance = [Above  0.0, 0.0]
-                                        }                                    
-                                }
-                        })
-                // no -> ignore
-                | _ -> ()
-            
-            // // Fix for unbreakable items
-            for smartObject in Def.SmartObject |> Seq.toArray do
-                match smartObject.Type with
-                // is it a station?
-                | Some (:? StationObjectDef as v) ->
-                    // update defintion
-                    if v.InputSlots.Length > 0 then 
-                        Def.SmartObject.Update smartObject.ID (fun x ->
-                            {x with
-                                Type = SmartObjectType.Station
-                                    {v with
-                                            ProcessingTime = Gt.hours 0.0
-                                            AutoActivate = Yes
-                                    }
-                            })
-                // no -> ignore
-                | _ -> ()
-            Def.SmartObject.RemoveAllWithTags ["EuropeVehicle"]
-            Def.Uniform.RemoveAllWithTags ["EU"]
+        // Items repair automatically
+        for smartObject in Def.SmartObject |> Seq.toArray do
+        match smartObject.Type with
+        // is it a station?
+        | Some (:? StationObjectDef as v) ->
+            // update defintion
+            if v.InputSlots.Length > 0 then 
+                Def.SmartObject.Update smartObject.ID (fun x ->
+                    {x with
+                        Type = SmartObjectType.Station
+                            {v with
+                                    ProcessingTime = Gt.hours 0.0
+                                    AutoActivate = Yes
+                            }
+                    })
+        // no -> ignore
+        | _ -> ()
+
+        Def.Emergency.Update "MafiaBossTrial" (fun x ->
+        {x with
+            Events = [
+                When.Emergency.Success [
+                    If.Chance 0.5 [Emergency.AddVisitor "Prisoner"]
+                    Hq.Storage.Create "PaperWork" 15
+                    Hq.Unlocks.Add "MafiaBossTrialDone"
+                    // Hq.Objective.add "SetupMedicalStation_Win"
+                    // Hq.showQuestGiver "SetupMedical_win"
+                    // ForEach.Emergency.Vehicle [Vehicle.Damage 10.0]
+                ]
+                When.Emergency.Failure [
+                    Hq.Unlocks.Add "MafiaBossTrialDone"
+                    // Hq.Objective.add "SetupMedicalStation_Fail"
+                    // Hq.showQuestGiver "SetupMedical_fail"
+                    // ForEach.Emergency.Vehicle [Vehicle.Damage 10.0]
+                ]
+
+                When.Emergency.Expiration[
+                    Hq.Unlocks.Add "MafiaBossTrialDone"
+                    // Hq.Objective.add "SetupMedicalStation_Fail"
+                    // Hq.showQuestGiver "SetupMedical_fail"
+                ]
+            ]
+        })
+
+        Def.Uniform.RemoveAllWithTags ["US"]
         
     EndlessMode = [
         {
