@@ -40,7 +40,7 @@ Def.Level.Add {
         for x = 0 to 59 do yield Marker (x, -1, ZNeg) "Street"
         for x = 0 to 59 do yield Marker (x, 60, ZPos) "Street"
         for z = 0 to 59 do yield Marker (-1, z, XNeg) "Street"
-        //for z = 0 to 59 do yield Marker (60, z, XPos) "Street"
+        for z = 0 to 59 do yield Marker (60, z, XPos) "Street"
     ]
 
     EmergencyRegions = BerlinEmergencyRegions
@@ -122,7 +122,7 @@ Def.Level.Add {
     
     Cells = [
         for x = 0 to 59 do yield Marker (x, -1, ZNeg) "Street"
-        //for x = 0 to 59 do yield Marker (x, 60, ZPos) "Street"
+        for x = 0 to 59 do yield Marker (x, 60, ZPos) "Street"
         for z = 0 to 59 do yield Marker (-1, z, XNeg) "Street"
         for z = 0 to 59 do yield Marker (60, z, XPos) "Street"
     ]
