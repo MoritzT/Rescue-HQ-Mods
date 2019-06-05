@@ -31,7 +31,10 @@ Def.Scenario.Add {
 
     Events = [
         When.Init [
+            Hq.Unlocks.Add "SF_OfficeDone"
+            Hq.Unlocks.Add "UnlockPolice"
             Hq.Unlocks.Add "MafiaBossTrialDone"
+            Hq.Unlocks.Add "UnlockMedical"
             //Day Shift
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
