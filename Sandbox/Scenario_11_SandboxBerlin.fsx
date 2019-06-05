@@ -31,9 +31,19 @@ Def.Scenario.Add {
 
     Events = [
         When.Init [
+            // Quest handling
+            // Marking all quests as finished
             Hq.Unlocks.Add "SFL_UnlockFD"
             Hq.Unlocks.Add "US_FireDept_Unlock"
             Hq.Unlocks.Add "Berlin_Firestation_Done"
+            Hq.Unlocks.Add "UnlockPolice"
+            Hq.Unlocks.Add "Berlin_PoliceStation_Done"
+            Hq.Unlocks.Add "UnlockMedical"
+            Hq.Unlocks.Add "SetupMedicalStation_Done"
+            // Adding the objective to reach 800 reputation
+            Hq.Objective.add "GetToTheEnd_1"
+
+            // Adding some starting staff since we skip all quests
             //Day Shift
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
@@ -66,11 +76,6 @@ Def.Scenario.Add {
     ]
 
     TimeLine =
-        (*let w1 (hours) = gt 0 2 0. + Gt.hours hours
-        let w2 (hours) = gt 0 5 0. + Gt.hours hours
-        let w3 (hours) = gt 0 7 0. + Gt.hours hours*)
-
-        
         [
         TimeLine.At (gt 4 7 0.0) [Hq.SetGameIsWon () ]
 
@@ -154,7 +159,6 @@ Def.Scenario.Add {
             ]            
         }
         TimeLine.At (gt 4 1 8.0) [Hq.showQuestGiver "Civil_Movement_AlmostDone"]
-
         TimeLine.Wave (gt 3 4 1.0) (gt 4 3 12.0) (gt 4 4 20.0) "HeatWave" "w_HeatWave"
         TimeLine.At (gt 3 4 1.0) [Hq.showQuestGiver "HeatWave_Announced"]
         TimeLine.At (gt 4 3 6.0) [Hq.showQuestGiver "HeatWaveToDo"]
@@ -169,33 +173,10 @@ Def.Scenario.Add {
             ]            
         }
         TimeLine.At (gt 4 4 8.0) [Hq.showQuestGiver "HeatWave_AlmostDone"]
-
         TimeLine.Wave (gt 4 0 1.0) (gt 4 6 12.0) (gt 4 6 14.0) "TrainWreck" "w_TrainWreck"
         TimeLine.ForceEmergencyAt (gt 4 6 12.0) 99 99 ["TrainWreck"]
         TimeLine.At (gt 4 6 8.0) [Hq.showQuestGiver "TrainWreck_Impending"]
         TimeLine.At (gt 4 0 1.0) [Hq.Objective.add "TrainWreckToDo" ]
-        //TimeLine.At (gt 4 7 20.0) [Hq.SetGameIsLost () ]
-
-
-(* //One way of spawning emergency waves - but not synched
-        TimeLine.RandomSpacing.Emergencies {
-            TimeSpan = gt 0 0 6.0, gt 0 2 0.
-            Spacing = Gt.hours 3.0, Gt.hours 5.0
-            Level = 1, 1
-            Tags = []
-        }
-
-//The method to spawn synched emergencies
-        TimeLine.Interval.Emergencies {
-            TimeSpan = gt 0 0 0., gt 0 1 0.
-            Interval = Gt.hours 4.0
-            Tags = []
-
-            Patterns = [
-                {Weight = 1; Levels = [1]}
-            ]            
-        }   
-        *)
 
         //BerlinEasy Intro missions
         TimeLine.Interval.Emergencies {
@@ -206,9 +187,6 @@ Def.Scenario.Add {
                 {Weight = 1; Levels = [1]}
             ]            
         }
-
-
-
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 0 2 6., gt 0 3 0.
             Interval = Gt.hours 4.0
@@ -217,8 +195,6 @@ Def.Scenario.Add {
                 {Weight = 1; Levels = [1]}
             ]            
         }   
-
-
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 0 3 0., gt 0 4 20.
             Interval = Gt.hours 6.0
@@ -240,7 +216,6 @@ Def.Scenario.Add {
                 {Weight = 1; Levels = [2;2;2]}
             ]            
         }
-
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 1 4 12., gt 2 0 0.
             Interval = Gt.hours 6.0
@@ -277,7 +252,6 @@ Def.Scenario.Add {
                 {Weight = 1; Levels = [3;3;4]}
             ]            
         }
-
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 3 3 0., gt 3 5 12.
             Interval = Gt.hours 4.0
@@ -313,33 +287,9 @@ Def.Scenario.Add {
                 {Weight = 1; Levels = [3;3;5]}
             ]            
         }
-        
-
-
     ]
 
-
-
-
-
     Objectives = [
-        (*{
-            ID = "BuildToilets"
-            Goals = [
-                Goal.SmartObject.Build "Toilet_01" 10
-                Goal.RequireMoney 1000
-                Goal.Economy.HaveReputation 100
-                Goal.Economy.HaveReputationCap 200
-              
-            ]
-            Events = [
-                When.Objective.Done [
-                    Hq.Money.Add 1000
-                ]
-            ]
-        }*)
-        /// story missions 
-        
         {
             ID = "MafiaBossTrialToDo"
             Goals = [
@@ -348,9 +298,7 @@ Def.Scenario.Add {
             Rewards = []
             Events = [
                 When.Init [Hq.showQuestGiver "MafiaBossTrialToDo"]
-                When.Objective.Done [
-                    
-                ]
+                When.Objective.Done []
             ]
         }
         {
@@ -361,9 +309,7 @@ Def.Scenario.Add {
             Rewards = []
             Events = [
                 When.Init [Hq.showQuestGiver "EcoSummitPreparationToDo"]
-                When.Objective.Done [
-                    
-                ]
+                When.Objective.Done []
             ]
         }
         {
@@ -374,9 +320,7 @@ Def.Scenario.Add {
             Rewards = []
             Events = [
                 When.Init [Hq.showQuestGiver "MedicineBustToDo"]
-                When.Objective.Done [
-                    
-                ]
+                When.Objective.Done []
             ]
         }
         {
@@ -387,9 +331,7 @@ Def.Scenario.Add {
             Rewards = []
             Events = [
                 When.Init [Hq.showQuestGiver "Rioting_EcoTerrorismToDo"]
-                When.Objective.Done [
-                    
-                ]
+                When.Objective.Done []
             ]
         }
         {
@@ -401,235 +343,23 @@ Def.Scenario.Add {
             Events = [
                 When.Init [Hq.showQuestGiver "TrainWreckToDo"]
                 When.Objective.Done [
-                    Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ()]
-                    
+                    Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ()]  
                 ]
             ]
-        }
-
-
-
-
-        //Set up fire station basics 
-
-        {
-            ID = "SetupFireStation"
-            Goals = [
-                
-                Goal.SmartObject.Build "FireEngine_LF10" 1
-                Goal.SmartObject.Build "HiringDeskFirefighter" 1
-                Goal.SmartObject.Build "GasBottleRefiller" 1
-                Goal.SmartObject.Build "BreathingApparatusStorage" 1
-                
-            ]
-            Rewards = [
-                Reward.Money 15000
-            ]
-            Events = [
-                When.Init [Hq.showQuestGiver "SetupFireStation"]
-                When.Objective.Done [
-                    //Hq.showQuestGiver "SetupFireStation_done"
-                    Hq.Objective.add "GetToTheEnd_1"
-                    Hq.Unlocks.Add "SFL_UnlockFD"
-                    Hq.Unlocks.Add "US_FireDept_Unlock"
-                    Hq.Unlocks.Add "Berlin_Firestation_Done"
-                    
-                ]
-            ]
-        }
+        } 
         {
             ID = "GetToTheEnd_1"
             Goals = [
                 Goal.Economy.HaveReputation 20
             ]
-            Rewards = [
-                Reward.Money 3500
-            ]
-            Events = [
-                When.Init [Hq.Emergency.Add "CatStuckInTreeHigh_1"]
-                When.Objective.Done [
-                    Hq.Objective.add "TrainingAreaSetup"
-                   // Hq.showQuestGiver "ReachRepLevel3_done"
-                ]
-            ]
-        }
-
-        {
-            ID = "TrainingAreaSetup"
-            Goals = [
-                
-                Goal.SmartObject.Build "WaterBuckets_01" 2
-            ]
-            Rewards = [
-                Reward.Profession 3 "GetActor" "FireFighter" [
-                    Hq.Actors.Create "FireFighter" []
-                ]
-                Reward.Profession 3 "GetApplicant" "FireFighter" [
-                    Hq.Actors.CreateOtherShift "FireFighter" []
-                ]
-            ]
-            Events = [
-                When.Init [Hq.showQuestGiver "SetupTrainingArea"]
-                When.Objective.Done [
-                    Hq.Objective.add "CommonAreaSetup"
-                ]
-            ]
-        }  
-
-
-
-        {
-            ID = "CommonAreaSetup"
-            Goals = [
-                
-                Goal.SmartObject.Build "Toilet_01" 1
-                Goal.SmartObject.Build "Shower" 1
-                Goal.SmartObject.Build "BathroomSink" 1
-                Goal.SmartObject.Build "Fridge" 1
-                Goal.SmartObject.Build "Bed" 1
-                Goal.Economy.HaveReputation 200
-            ]
-            Rewards = [
-                Reward.Money 20000
-                Reward.Profession 4 "GetActor" "Police" [
-                    Hq.Actors.Create "Police" [Actor.LevelUp ()]
-                ]
-                Reward.Profession 4 "GetApplicant" "Police" [
-                    Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-                ]
-            ]
-            Events = [
-                When.Init [Hq.showQuestGiver "SetupCommonArea"]
-                When.Objective.Done [
-                    Hq.Unlocks.Add "UnlockPolice"
-                    //Hq.showQuestGiver "SetupCommonArea_done"
-
-                    Hq.Objective.add "SetupPoliceStation"
-                ]
-            ]
-        }  
-
-        {
-            ID = "SetupPoliceStation"
-            Goals = [
-                Goal.SmartObject.Build "PersonalLocker_Police" 4
-                Goal.SmartObject.Build "PoliceCar_Cruiser" 1
-                Goal.SmartObject.Build "PoliceDesk" 1
-                Goal.SmartObject.Build "FileCabinet" 1
-                Goal.SmartObject.Build "HiringDeskPolice" 1
-                Goal.Economy.HaveReputation 300
-            ]
-            Rewards = [
-                Reward.Money 25000
-                Reward.Profession 2 "GetActor" "Police" [
-                    Hq.Actors.Create "Police" [Actor.LevelUp ()]
-                ]
-                Reward.Profession 2 "GetApplicant" "FireFighter" [
-                    Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
-                ]
-            ]
-            Events = [
-                When.Init [
-                    Hq.showQuestGiver "SetupPolice"
-
-                    ]
-                When.Objective.Done [
-                    
-                    Hq.showQuestGiver "SetupPolice_done"
-                    Hq.Unlocks.Add "Berlin_PoliceStation_Done"
-                    //Hq.Objective.add "MafiaBossTrialQuest"
-                ]
-            ]
-        } 
-
-        {
-            ID = "MafiaBossTrialQuest"
-            Goals = [
-                Goal.HaveUnlocked "MafiaBossTrialDone"
-            ]
-            Rewards = []
+            Rewards = [Reward.Money 3500]
             Events = [
                 When.Init []
-                When.Objective.Done []
+                When.Objective.Done [
+                    Hq.Objective.add "GetNextRepLevel"
+                ]
             ]
         } 
-
-        {
-            ID = "SetupMedicalStation_Fail"
-            Goals = [
-                Goal.SmartObject.Build "PersonalLocker_Medical" 4
-                Goal.SmartObject.Build "Ambulance_Standard" 1
-                Goal.SmartObject.Build "RoomTriageStation" 1
-                Goal.SmartObject.Build "MedicineLab" 1
-                Goal.SmartObject.Build "RoomBurnTreatment" 1
-                Goal.SmartObject.Build "HiringDeskMedic" 1
-                Goal.Economy.HaveReputation 300
-            ]
-            Rewards = [
-                Reward.Money 25000
-                Reward.Profession 3 "GetActor" "Medic" [
-                    Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-                ]
-                Reward.Profession 3 "GetActor" "Medic" [
-                    Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
-                ]
-            ]
-            Events = [
-                When.Init [
-                    Hq.Unlocks.Add "UnlockMedical"
-                    Hq.Actors.CreateOtherShift "Medic" []
-                    Hq.Actors.Create "Medic" []
-                    Hq.Actors.CreateOtherShift "Medic" []
-                    Hq.Actors.Create "Medic" []
-                    Hq.Money.Income 40000
-                ]
-                When.Objective.Done [
-                    //Hq.showQuestGiver "SetupMedical_done"
-                    Hq.Unlocks.Add "SetupMedicalStation_Done"
-                    Hq.Objective.add "GetNextRepLevel"
-                    
-                ]
-            ]
-        }
-
-        {
-            ID = "SetupMedicalStation_Win"
-            Goals = [
-                Goal.SmartObject.Build "PersonalLocker_Medical" 4
-                Goal.SmartObject.Build "Ambulance_Standard" 1
-                Goal.SmartObject.Build "RoomTriageStation" 1
-                Goal.SmartObject.Build "MedicineLab" 1
-                Goal.SmartObject.Build "RoomBurnTreatment" 1
-                Goal.SmartObject.Build "HiringDeskMedic" 1
-                Goal.Economy.HaveReputation 300
-            ]
-            Rewards = [
-                Reward.Money 25000
-                Reward.Profession 3 "GetActor" "Medic" [
-                    Hq.Actors.Create "Medic" []
-                ]
-                Reward.Profession 3 "GetActor" "Medic" [
-                    Hq.Actors.CreateOtherShift "Medic" []
-                ]
-            ]
-            Events = [
-                When.Init [
-                    Hq.Unlocks.Add "UnlockMedical"
-                    Hq.Actors.CreateOtherShift "Medic" []
-                    Hq.Actors.Create "Medic" []
-                    Hq.Actors.CreateOtherShift "Medic" []
-                    Hq.Actors.Create "Medic" []
-                    Hq.Money.Income 80000
-                ]
-                When.Objective.Done [
-                    //Hq.showQuestGiver "SetupMedical_done"
-                    Hq.Unlocks.Add "SetupMedicalStation_Done"
-                    Hq.Objective.add "GetNextRepLevel"
-                    
-                ]
-            ]
-        }  
-
         {
             ID = "GetNextRepLevel"
             Goals = [
@@ -661,13 +391,10 @@ Def.Scenario.Add {
             Events = [
                 When.Init [Hq.showQuestGiver "ReachRepLevel2"]
                 When.Objective.Done [
-                    //Hq.showQuestGiver "ReachRepLevel2_done"
-
                     Hq.Objective.add "GetToTheEnd"
                 ]
             ]
         }
-
         {
             ID = "GetToTheEnd"
             Goals = [
@@ -681,14 +408,12 @@ Def.Scenario.Add {
                 Reward.Profession 1 "GetActor" "Medic" [
                     Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ();Actor.LevelUp ()]
                 ]
-
                 Reward.Profession 1 "GetActor" "Police" [
                     Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
                 ]
                 Reward.Profession 1 "GetActor" "Police" [
                     Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
                 ]
-
                 Reward.Profession 1 "GetActor" "FireFighter" [
                     Hq.Actors.Create "FireFighter" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
                 ]
@@ -699,16 +424,15 @@ Def.Scenario.Add {
             Events = [
                 When.Init [Hq.showQuestGiver "ReachRepLevel3"]
                 When.Objective.Done [
-                   // Hq.showQuestGiver "ReachRepLevel3_done"
                 ]
             ]
         }     
-
     ]    
 
     Modifications = fun () ->
+        // Removing all US vehicles and uniforms
         Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
-
+        Def.Uniform.RemoveAllWithTags ["US"]
 
         Def.SmartObject.Update "PersonalLocker_Fire" (fun x -> {x with Unlock = None})
 
@@ -722,7 +446,6 @@ Def.Scenario.Add {
             }
         })
 
-
         Def.SmartObject.Update "FireEngine_TLF3000" (fun x -> 
         {x with 
             Unlock = Some {
@@ -733,53 +456,8 @@ Def.Scenario.Add {
             }
         })
 
-        Def.Uniform.RemoveAllWithTags ["US"]
-        // Def.SmartObject.RemoveAllWithTags ["USAVehicle"]
-        // // Unlock everything
-        // for smartObject in Def.SmartObject |> Seq.toArray do
-        //     Def.SmartObject.Update smartObject.ID (fun x -> {x with Unlock = None})
         
-        // // No damage to vehicles
-        // for smartObject in Def.SmartObject |> Seq.toArray do
-        // match smartObject.Type with
-        // // is it a vehicle?
-        // | Some (:? VehicleDef as v) ->
-        //     // update defintion
-        //     Def.SmartObject.Update smartObject.ID (fun x ->
-        //         {x with
-        //             Type = SmartObjectType.Vehicle
-        //                 {v with
-        //                     // update maintenance of vehicle
-        //                     Maintenance =
-        //                         {v.Maintenance with
-        //                             // nullify damage
-        //                             DamageMultiplier = [Above 0, 0.0]
-        //                             // never break down
-        //                             BreakDownChance = [Above  0.0, 0.0]
-        //                         }                                    
-        //                 }
-        //         })
-        // // no -> ignore
-        // | _ -> ()
-
-        // // Items repair automatically
-        // for smartObject in Def.SmartObject |> Seq.toArray do
-        // match smartObject.Type with
-        // // is it a station?
-        // | Some (:? StationObjectDef as v) ->
-        //     // update defintion
-        //     if v.InputSlots.Length > 0 then 
-        //         Def.SmartObject.Update smartObject.ID (fun x ->
-        //             {x with
-        //                 Type = SmartObjectType.Station
-        //                     {v with
-        //                             ProcessingTime = Gt.hours 0.0
-        //                             AutoActivate = Yes
-        //                     }
-        //             })
-        // // no -> ignore
-        // | _ -> ()
-
+        
         Def.Emergency.Update "MafiaBossTrial" (fun x ->
         {x with
             Events = [
@@ -787,26 +465,15 @@ Def.Scenario.Add {
                     If.Chance 0.5 [Emergency.AddVisitor "Prisoner"]
                     Hq.Storage.Create "PaperWork" 15
                     Hq.Unlocks.Add "MafiaBossTrialDone"
-                    // Hq.Objective.add "SetupMedicalStation_Win"
-                    // Hq.showQuestGiver "SetupMedical_win"
-                    // ForEach.Emergency.Vehicle [Vehicle.Damage 10.0]
                 ]
                 When.Emergency.Failure [
                     Hq.Unlocks.Add "MafiaBossTrialDone"
-                    // Hq.Objective.add "SetupMedicalStation_Fail"
-                    // Hq.showQuestGiver "SetupMedical_fail"
-                    // ForEach.Emergency.Vehicle [Vehicle.Damage 10.0]
                 ]
-
                 When.Emergency.Expiration[
                     Hq.Unlocks.Add "MafiaBossTrialDone"
-                    // Hq.Objective.add "SetupMedicalStation_Fail"
-                    // Hq.showQuestGiver "SetupMedical_fail"
                 ]
             ]
         })
-
-        Def.Uniform.RemoveAllWithTags ["US"]
         
     EndlessMode = [
         {
@@ -846,7 +513,6 @@ Def.Scenario.Add {
                 TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "Rioting_EcoTerrorism_Impending"]
             ]
         }
-
         {
             ID = "1"
             TimeLine = [
@@ -884,7 +550,6 @@ Def.Scenario.Add {
                 TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "TrainWreck_Impending"]
             ]
         }            
-
         {
             ID = "2"
             TimeLine = [
@@ -922,7 +587,6 @@ Def.Scenario.Add {
                 TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "TrainWreck_Impending"]
             ]
         }
-
         {
             ID = "3"
             TimeLine = [
@@ -960,6 +624,5 @@ Def.Scenario.Add {
                 TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "Rioting_EcoTerrorism_Impending"]
             ]
         }
-
     ]    
 }
