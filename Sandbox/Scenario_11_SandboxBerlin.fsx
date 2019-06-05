@@ -31,10 +31,9 @@ Def.Scenario.Add {
 
     Events = [
         When.Init [
-            Hq.Objective.add "GetToTheEnd_1"
-                    Hq.Unlocks.Add "SFL_UnlockFD"
-                    Hq.Unlocks.Add "US_FireDept_Unlock"
-                    Hq.Unlocks.Add "Berlin_Firestation_Done"
+            Hq.Unlocks.Add "SFL_UnlockFD"
+            Hq.Unlocks.Add "US_FireDept_Unlock"
+            Hq.Unlocks.Add "Berlin_Firestation_Done"
             //Day Shift
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]

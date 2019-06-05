@@ -1,5 +1,5 @@
 #SandboxBerlinName
-V. Berlin Sandbox (all unlocks)
+V. Berlin Sandbox
 
 #SandboxBerlinLocation
 Berlin - Sandbox 1
@@ -13,12 +13,8 @@ Berlin
 #SandboxBerlinDescription
 A big plain map for you to build the base of your dreams.
 
-Unlocks                       : All
-Vehicle Damage         : Off
-Items break                 : Off
-
 City Grants                  : 2 
-Initial Funding             : 100.000.000
+Initial Funding             : 100.000
 
 #SandboxBerlinDuration
 5 Weeks (before endless mode)
@@ -48,7 +44,7 @@ Initial Funding : 100.000
 San Francisco
 
 #SandboxSFName
-VII. Sandbox of SF (all unlocks)
+VII. Sandbox of SF
 
 #SandboxSFLocation
 San Francisco - Sandbox Bay
@@ -62,12 +58,8 @@ San Francisco - Sandbox Bay
 #SandboxSFDescription
 A big plain map for you to build the base of your dreams.
 
-Unlocks                       : All
-Vehicle Damage         : Off
-Items break                 : Off
-
 City Grants                  : 2 
-Initial Funding             : 100.000.000
+Initial Funding             : 150.000
 
 #SandboxSFLiteLocationShort
 San Francisco
