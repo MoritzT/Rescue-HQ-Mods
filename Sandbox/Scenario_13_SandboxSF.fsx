@@ -13,7 +13,7 @@ Def.Scenario.Add {
     VehicleRepairRate = Gt.perHour 20.0
 
     EconomySystem = {
-        InitialFunds = 100_000_000
+        InitialFunds = 150_000
         AwardedCityGrants = 2
         MoneyPerCityGrant = 120_000
     }
@@ -681,53 +681,54 @@ Def.Scenario.Add {
     ]    
 
     Modifications = fun () ->
+        
         Def.SmartObject.RemoveAllWithTags ["EuropeVehicle"]
         //Def.SmartObject.Update "PersonalLocker_Fire" (fun x -> {x with Unlock = None})
 
-        // Unlock everything
-        for smartObject in Def.SmartObject |> Seq.toArray do
-            Def.SmartObject.Update smartObject.ID (fun x -> {x with Unlock = None})
+        // // Unlock everything
+        // for smartObject in Def.SmartObject |> Seq.toArray do
+        //     Def.SmartObject.Update smartObject.ID (fun x -> {x with Unlock = None})
         
-        // No damage to vehicles
-        for smartObject in Def.SmartObject |> Seq.toArray do
-        match smartObject.Type with
-        // is it a vehicle?
-        | Some (:? VehicleDef as v) ->
-            // update defintion
-            Def.SmartObject.Update smartObject.ID (fun x ->
-                {x with
-                    Type = SmartObjectType.Vehicle
-                        {v with
-                            // update maintenance of vehicle
-                            Maintenance =
-                                {v.Maintenance with
-                                    // nullify damage
-                                    DamageMultiplier = [Above 0, 0.0]
-                                    // never break down
-                                    BreakDownChance = [Above  0.0, 0.0]
-                                }                                    
-                        }
-                })
-        // no -> ignore
-        | _ -> ()
+        // // No damage to vehicles
+        // for smartObject in Def.SmartObject |> Seq.toArray do
+        // match smartObject.Type with
+        // // is it a vehicle?
+        // | Some (:? VehicleDef as v) ->
+        //     // update defintion
+        //     Def.SmartObject.Update smartObject.ID (fun x ->
+        //         {x with
+        //             Type = SmartObjectType.Vehicle
+        //                 {v with
+        //                     // update maintenance of vehicle
+        //                     Maintenance =
+        //                         {v.Maintenance with
+        //                             // nullify damage
+        //                             DamageMultiplier = [Above 0, 0.0]
+        //                             // never break down
+        //                             BreakDownChance = [Above  0.0, 0.0]
+        //                         }                                    
+        //                 }
+        //         })
+        // // no -> ignore
+        // | _ -> ()
 
-        // Items repair automatically
-        for smartObject in Def.SmartObject |> Seq.toArray do
-        match smartObject.Type with
-        // is it a station?
-        | Some (:? StationObjectDef as v) ->
-            // update defintion
-            if v.InputSlots.Length > 0 then 
-                Def.SmartObject.Update smartObject.ID (fun x ->
-                    {x with
-                        Type = SmartObjectType.Station
-                            {v with
-                                    ProcessingTime = Gt.hours 0.0
-                                    AutoActivate = Yes
-                            }
-                    })
-        // no -> ignore
-        | _ -> ()
+        // // Items repair automatically
+        // for smartObject in Def.SmartObject |> Seq.toArray do
+        // match smartObject.Type with
+        // // is it a station?
+        // | Some (:? StationObjectDef as v) ->
+        //     // update defintion
+        //     if v.InputSlots.Length > 0 then 
+        //         Def.SmartObject.Update smartObject.ID (fun x ->
+        //             {x with
+        //                 Type = SmartObjectType.Station
+        //                     {v with
+        //                             ProcessingTime = Gt.hours 0.0
+        //                             AutoActivate = Yes
+        //                     }
+        //             })
+        // // no -> ignore
+        // | _ -> ()
 
         Def.Emergency.Update "MafiaBossTrial" (fun x ->
         {x with
