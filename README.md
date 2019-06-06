@@ -25,7 +25,6 @@ Start the game and activate the mod from the start menu.
 * [$$$ Money $$$](https://steamcommunity.com/sharedfiles/filedetails/?id=1756466798)
 * [No Vehicle Damage](https://steamcommunity.com/sharedfiles/filedetails/?id=1757282293)
 * [Fast Hire](https://steamcommunity.com/sharedfiles/filedetails/?id=1757989823)
-* [Sandbox Lite](https://steamcommunity.com/sharedfiles/filedetails/?id=1758050165)
 * [Medic Utilities](https://steamcommunity.com/sharedfiles/filedetails/?id=1758508536)
 
 ## Support
