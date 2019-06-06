@@ -1,31 +1,31 @@
 #load "Include.fsx"
 open EMT.Modding
- 
+
 Def.Scenario.Add {
-    ID = "SandboxSF"
+    ID = "SandboxSFHard"
     EnableTutorials = No
 
     ApplicantTimeout = Gt.days 1.0
     FireProtectionTime = Gt.weeks 1.0
 
-    Level = "SandboxSF", ["WholeMap"]
+    Level = "Berlin_Endless", ["CentralWing"]
 
     VehicleRepairRate = Gt.perHour 20.0
 
     EconomySystem = {
-        InitialFunds = 150_000
+        InitialFunds = 80_000
         AwardedCityGrants = 2
-        MoneyPerCityGrant = 120_000
+        MoneyPerCityGrant = 90_000
     }
-
+ 
     ReputationSystem = {
         MoneyPerReputation = 100
         Ranks = [
             {MaxReputation = 600; CityHallPayments = 60_000}
-            {MaxReputation = 1000; CityHallPayments = 80_000}
-            {MaxReputation = 1_300; CityHallPayments = 100_000}
-            {MaxReputation = 2_000; CityHallPayments = 150_000}
-            {MaxReputation = 2_800; CityHallPayments = 180_000}
+            {MaxReputation = 1000; CityHallPayments = 70_000}
+            {MaxReputation = 1_300; CityHallPayments = 90_000}
+            {MaxReputation = 2_000; CityHallPayments = 110_000}
+            {MaxReputation = 2_800; CityHallPayments = 130_000}
         ]
     }
 
@@ -45,11 +45,11 @@ Def.Scenario.Add {
             Hq.Unlocks.Add "SFL_UnlockFD"
             Hq.Unlocks.Add "SF_PoliceDone"
             Hq.Unlocks.Add "SF_Medical_Stage1_Done"
+            Hq.Unlocks.Add "UnlockAmbus"
             Hq.Unlocks.Add "SF_ExpandFirefighterDeptP1_Done"
             Hq.Unlocks.Add "SF_ExpandFirefighterDeptP2_Done"
-            Hq.Unlocks.Add "UnlockAmbus"
             // Adding some starting staff since we skip all quests
-            //Day Shift
+//Day Shift
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.Create "FireFighter" [Actor.LevelUp ()]
@@ -61,7 +61,7 @@ Def.Scenario.Add {
             Hq.Actors.Create "Medic" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.Create "Medic" [Actor.LevelUp ()]
             Hq.Actors.Create "Medic" [Actor.LevelUp ()]
-            // Night Shift
+// Night Shift
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
@@ -72,7 +72,7 @@ Def.Scenario.Add {
             Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ();Actor.LevelUp ()]
             Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]
-            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()]    
+            Hq.Actors.CreateOtherShift "Medic" [Actor.LevelUp ()] 
         ]
         When.ShiftStart [
         ]
@@ -81,10 +81,16 @@ Def.Scenario.Add {
     ]
 
     TimeLine =
+        (*let w1 (hours) = gt 0 2 0. + Gt.hours hours
+        let w2 (hours) = gt 0 5 0. + Gt.hours hours
+        let w3 (hours) = gt 0 7 0. + Gt.hours hours*)
+
+        
         [
         TimeLine.At (gt 4 7 0.0) [Hq.SetGameIsWon ()]
 
-        //Crime syndicate is on the rise. Emergencies are mainly sabotage attacks coupled with armed attacks
+//Crime syndicate is on the rise. Emergencies are mainly sabotage attacks coupled with armed attacks
+
 //Week 1 - small time gangsters 
 
         TimeLine.Wave (gt 0 0 8.0) (gt 0 0 22.0) (gt 0 4 0.0) "SmallTimeGangsters" "w_SmallTimeGangsters"
@@ -96,9 +102,9 @@ Def.Scenario.Add {
             Interval = Gt.hours 4.0
             Tags = ["SmallTimeGangsters"]
             Patterns = [
-                {Weight = 2; Levels = [1;2]}
-                {Weight = 3; Levels = [1;1]}
-                {Weight = 1; Levels = [3]}
+                {Weight = 2; Levels = [1;2;1]}
+                {Weight = 3; Levels = [1;2;1]}
+                {Weight = 1; Levels = [2;2;1]}
             ]            
         }
        
@@ -120,7 +126,7 @@ Def.Scenario.Add {
             Patterns = [
                 {Weight = 2; Levels = [1;2;3]}
                 {Weight = 3; Levels = [1;2;2]}
-                {Weight = 1; Levels = [2;3]}
+                {Weight = 1; Levels = [2;3;2]}
             ]            
         }
 
@@ -131,7 +137,7 @@ Def.Scenario.Add {
         TimeLine.At (gt 1 6 6.1) [Hq.Unlocks.Add "KidnapKingpinDone" ]
 
 //Week 3 - intensified attacks (bombs) (requires firefighting)
-        TimeLine.Wave (gt 2 0 1.0) (gt 2 3 12.0) (gt 2 6 0.0) "TerrorAttacks" "w_TerrorAttacks"
+        TimeLine.Wave (gt 2 0 1.0) (gt 2 3 12.0) (gt 2 5 22.0) "TerrorAttacks" "w_TerrorAttacks"
         TimeLine.At (gt 2 0 1.0) [Hq.showQuestGiver "TerrorAttacks_Announced"]
         TimeLine.At (gt 2 2 22.0) [Hq.showQuestGiver "TerrorAttacks_Impending"]
         TimeLine.At (gt 2 5 12.0) [Hq.showQuestGiver "TerrorAttacks_AlmostDone"]
@@ -141,8 +147,8 @@ Def.Scenario.Add {
             Tags = ["TerrorAttacks"]
             Patterns = [
                 {Weight = 2; Levels = [1;2;3]}
-                {Weight = 3; Levels = [1;2;2]}
-                {Weight = 1; Levels = [2;3]}
+                {Weight = 3; Levels = [1;2;2;2]}
+                {Weight = 1; Levels = [2;3;2]}
             ]            
         }
 
@@ -150,7 +156,7 @@ Def.Scenario.Add {
         TimeLine.At (gt 2 5 22.0) [Hq.showQuestGiver "HitWarehouse_Impending"]
         TimeLine.At (gt 2 1 1.0) [Hq.Objective.add "HitWarehouseToDo" ]
         TimeLine.ForceEmergencyAt (gt 2 6 9.0) 99 99 ["HitWarehouse"]
-        TimeLine.At (gt 2 6 12.1) [Hq.Unlocks.Add "HitWarehouseDone" ]
+        TimeLine.At (gt 2 6 18.1) [Hq.Unlocks.Add "HitWarehouseDone" ]
 
 //Week 4 - police investigation (process prisoners, solve cases) + people take to the streets 
         TimeLine.Wave (gt 2 7 1.0) (gt 3 1 12.0) (gt 3 5 0.0) "MassHysteria" "w_MassHysteria"
@@ -162,9 +168,11 @@ Def.Scenario.Add {
             Interval = Gt.hours 4.0
             Tags = ["MassHysteria"]
             Patterns = [
-                {Weight = 2; Levels = [1;2;3]}
-                {Weight = 3; Levels = [1;2;2]}
-                {Weight = 1; Levels = [2;3]}
+                {Weight = 4; Levels = [2;2;3]}
+                {Weight = 5; Levels = [1;2;3;2]}
+                {Weight = 3; Levels = [4;3;3]}
+                {Weight = 2; Levels = [2;3;3]}
+                {Weight = 1; Levels = [4;4]}
             ]            
         }
 
@@ -187,7 +195,7 @@ Def.Scenario.Add {
             Patterns = [
                 {Weight = 2; Levels = [4;2;3]}
                 {Weight = 3; Levels = [4;2;2]}
-                {Weight = 1; Levels = [2;4]}
+                {Weight = 1; Levels = [2;3;4]}
             ]            
         }
 
@@ -207,7 +215,9 @@ Def.Scenario.Add {
             Interval = Gt.hours 6.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [1]}
+                {Weight = 4; Levels = [1;1]}
+                {Weight = 1; Levels = [1;1;1]}
+                {Weight = 2; Levels = [1]}
             ]            
         }  
         TimeLine.Interval.Emergencies {
@@ -215,7 +225,9 @@ Def.Scenario.Add {
             Interval = Gt.hours 6.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [1]}
+                {Weight = 4; Levels = [1;2]}
+                {Weight = 1; Levels = [1;2;1]}
+                {Weight = 2; Levels = [2]}
             ]            
         }  
         TimeLine.Interval.Emergencies {
@@ -224,7 +236,8 @@ Def.Scenario.Add {
             Tags = ["USA"]
             Patterns = [
                 {Weight = 2; Levels = [1;1]}
-                {Weight = 5; Levels = [2]}
+                {Weight = 5; Levels = [1;2]}
+                {Weight = 5; Levels = [1;2;1]}
             ]            
         }
         TimeLine.Interval.Emergencies {
@@ -237,17 +250,19 @@ Def.Scenario.Add {
                 {Weight = 5; Levels = [1;2;1]}
             ]            
         }
+
  //week 2 (1 0 0. -> 1 7 0.)
+ 
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 1 0 0., gt 1 3 0.
             Interval = Gt.hours 4.0
             Tags = ["USA"]
             Patterns = [
                 {Weight = 1; Levels = [1;1;2]}
-                {Weight = 5; Levels = [1;2;1]}
-                {Weight = 5; Levels = [2;2]}
+                {Weight = 2; Levels = [1;2;1]}
+                {Weight = 2; Levels = [2;2]}
                 {Weight = 3; Levels = [2;2;1]}
-                {Weight = 1; Levels = [2;2;2]}
+                {Weight = 3; Levels = [2;2;2]}
             ]            
         }
         TimeLine.Interval.Emergencies {
@@ -255,72 +270,86 @@ Def.Scenario.Add {
             Interval = Gt.hours 6.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 5; Levels = [1;2;1]}
-                {Weight = 5; Levels = [2;2]}
+                {Weight = 3; Levels = [1;2;1]}
+                {Weight = 5; Levels = [2;2;2]}
+                {Weight = 3; Levels = [2;2;1]}
             ]            
         }
+
 //week 3 (2 0 0. -> 2 7 0.)
         TimeLine.Interval.Emergencies {
-            TimeSpan = gt 2 0 0., gt 2 3 6.
+            TimeSpan = gt 2 0 0., gt 2 3 0.
             Interval = Gt.hours 4.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [1;1;2;2]}
+                {Weight = 1; Levels = [1;1;2;2;3]}
                 {Weight = 5; Levels = [2;2;2]}
-                {Weight = 5; Levels = [2;3]}
+                {Weight = 5; Levels = [2;3;1;1]}
                 {Weight = 3; Levels = [2;3;2;1]}
                 {Weight = 3; Levels = [2;2;3]}
-                {Weight = 1; Levels = [3;3]}
+                {Weight = 1; Levels = [3;3;2]}
             ]            
         }
         TimeLine.Interval.Emergencies {
-            TimeSpan = gt 2 6 14., gt 3 0 0.
-            Interval = Gt.hours 6.0
+            TimeSpan = gt 2 6 18., gt 3 0 0.
+            Interval = Gt.hours 8.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [1;1;2;2]}
+                {Weight = 1; Levels = [1;1;2;2;3]}
                 {Weight = 5; Levels = [2;2;2]}
-                {Weight = 5; Levels = [2;3]}
+                {Weight = 5; Levels = [2;3;3]}
                 {Weight = 3; Levels = [2;2;3]}
-                {Weight = 1; Levels = [3;3]}
+                {Weight = 1; Levels = [3;3;2;1]}
             ]            
-        }    
+        }
+
 //week 4  (3 0 0. -> 3 7 0.)
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 3 0 0., gt 3 1 8.
             Interval = Gt.hours 4.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [2;3;3;3]}
-                {Weight = 5; Levels = [3;3;2;2]}
-                {Weight = 5; Levels = [2;3;4]}
-                {Weight = 3; Levels = [2;3;3]}
-                {Weight = 1; Levels = [3;3;4]}
+                {Weight = 1; Levels = [2;3;3;3;2]}
+                {Weight = 5; Levels = [3;3;2;2;1]}
+                {Weight = 5; Levels = [2;3;4;2]}
+                {Weight = 3; Levels = [2;3;3;4]}
+                {Weight = 1; Levels = [3;3;4;4]}
+            ]            
+        }
+        TimeLine.Interval.Emergencies {
+            TimeSpan = gt 3 1 12., gt 3 1 8.
+            Interval = Gt.hours 8.0
+            Tags = ["USA"]
+            Patterns = [
+                {Weight = 5; Levels = [2;3;4;2]}
+                {Weight = 3; Levels = [2;3;3;3]}
+                {Weight = 1; Levels = [3;4;5]}
             ]            
         }
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 3 5 12., gt 4 0 0.
-            Interval = Gt.hours 4.0
+            Interval = Gt.hours 6.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [2;3;3;3]}
-                {Weight = 5; Levels = [3;3;2;2]}
-                {Weight = 5; Levels = [2;3;4]}
-                {Weight = 3; Levels = [2;3;3]}
-                {Weight = 1; Levels = [3;3;4]}
+                {Weight = 1; Levels = [2;3;3;3;3]}
+                {Weight = 5; Levels = [3;3;2;2;3]}
+                {Weight = 5; Levels = [2;2;3;4]}
+                {Weight = 3; Levels = [2;3;3;3]}
+                {Weight = 1; Levels = [3;4;5]}
             ]            
         }
+
 //week 5 (4 0 0.  -> 4 7 0.)
         TimeLine.Interval.Emergencies {
             TimeSpan = gt 4 0 0., gt 4 1 0.
-            Interval = Gt.hours 4.0
+            Interval = Gt.hours 6.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 1; Levels = [3;3;2;4]}
-                {Weight = 5; Levels = [3;3;3;4]}
-                {Weight = 5; Levels = [3;3;4]}
-                {Weight = 3; Levels = [3;3;5]}
-                {Weight = 1; Levels = [3;3;5]}
+                {Weight = 1; Levels = [3;3;3;4]}
+                {Weight = 5; Levels = [3;3;4;4]}
+                {Weight = 5; Levels = [3;3;5]}
+                {Weight = 3; Levels = [3;4;5]}
+                {Weight = 1; Levels = [4;4;5]}
             ]            
         }
         TimeLine.Interval.Emergencies {
@@ -328,16 +357,19 @@ Def.Scenario.Add {
             Interval = Gt.hours 8.0
             Tags = ["USA"]
             Patterns = [
-                {Weight = 3; Levels = [3;3;5]}
-                {Weight = 1; Levels = [3;3;5]}
+                {Weight = 3; Levels = [5;5;5]}
+                {Weight = 5; Levels = [3;4;4;4]}
+                {Weight = 1; Levels = [3;4;5;5]}
             ]            
         }
     ]
+
 /// objectives 
     Objectives = [
-        /// Story Missions 
-        /// 
-        /// 
+
+/// Story Missions 
+/// 
+/// 
         {
             ID = "SafehouseHitToDo"
             Goals = [
@@ -393,53 +425,40 @@ Def.Scenario.Add {
                 When.Objective.Done []
             ]
         }
+
 /// Pacing objectives
 /// 
         {
-            ID = "SanFran_Limited_BuildOffice_1"
-            Goals = [
-                Goal.Room.Build "Office" 36
-                Goal.Room.Build "Garage" 20
-                Goal.Room.Build "Utility" 20
-                Goal.SmartObject.Build "MainEntrance" 1
-              
-            ]
-            Rewards = []
-            Events = [
-                When.Init [Hq.showQuestGiver "SanFran_Limited_BuildOffice_1"]
-                When.Objective.Done [
-                    Hq.Money.Income 6000
-                    Hq.Unlocks.Add "SF_OfficeDone"
-                    Hq.Objective.add "SanFran_Limited_Setup_Police"
-                ]
-            ]
-        }
-
-        {
             ID = "SanFran_Limited_Setup_Police"
             Goals = [
+                Goal.SmartObject.Build "MainEntrance" 1
+                Goal.Room.Build "Office" 36
+                Goal.Room.Build "Garage" 40
+                Goal.Room.Build "Utility" 30
                 Goal.SmartObject.Build "HiringDeskPolice" 1
                 Goal.SmartObject.Build "PoliceDesk" 1
                 Goal.SmartObject.Build "FileCabinet" 1
-                Goal.SmartObject.Build "FileCabinetFiles"  1  
+                Goal.SmartObject.Build "FileCabinetFiles"  1
             ]
             Rewards = [
-                Reward.Money 6000
+                Reward.Money 10000
                 Reward.Profession 4 "GetActor" "Police" [
                     Hq.Actors.Create "Police" [Actor.LevelUp ()]
                 ]
                 Reward.Profession 1 "GetActor" "Police" [
-                    Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ()]
+                    Hq.Actors.Create "Police" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
                 ]
                 Reward.Profession 4 "GetActor" "Police" [
                     Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ()]
                 ]
                 Reward.Profession 1 "GetActor" "Police" [
-                    Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
+                    Hq.Actors.CreateOtherShift "Police" [Actor.LevelUp ();Actor.LevelUp ()]
                 ]
             ]
             Events = [
-                When.Init [Hq.showQuestGiver "SanFran_Limited_Setup_Police"]
+                When.Init [
+                    Hq.Unlocks.Add "SF_OfficeDone"
+                    Hq.showQuestGiver "SanFran_Limited_Setup_Police_Hard"]
                 When.Objective.Done [
                     Hq.Objective.add "SanFran_Limited_BuildUpPolice"
                     Hq.Unlocks.Add "SF_PoliceStage1Done"
@@ -451,7 +470,8 @@ Def.Scenario.Add {
             Goals = [
                 Goal.SmartObject.Build "PoliceCar_Cruiser" 2
                 Goal.SmartObject.Build "PersonalLocker_Police" 10
-                Goal.SmartObject.Build "US_PoliceArmory" 2   
+                Goal.SmartObject.Build "US_PoliceArmory" 2
+                
             ]
             Rewards = [
                 Reward.Money 25000
@@ -471,7 +491,7 @@ Def.Scenario.Add {
                 Goal.SmartObject.Build "Shower" 1
                 Goal.SmartObject.Build "BathroomSink" 1
                 Goal.SmartObject.Build "Fridge" 1
-                Goal.SmartObject.Build "Bed" 1          
+                Goal.SmartObject.Build "Bed" 1     
             ]
             Rewards = []
             Events = [
@@ -509,7 +529,6 @@ Def.Scenario.Add {
             Events = [
                 When.Init [Hq.showQuestGiver "SanFran_Limited_SetupPrison"]
                 When.Objective.Done [
-
                     Hq.Objective.add "SanFran_Limited_ExpandMedical"
                     Hq.Objective.add "SanFran_Limited_ExpandFireDept"
                     Hq.Unlocks.Add "SFL_UnlockMD"
@@ -522,6 +541,7 @@ Def.Scenario.Add {
             ID = "SanFran_Limited_ExpandMedical"
             Goals = [
                 Goal.SmartObject.Build "PersonalLocker_Medical" 6
+                
                 Goal.SmartObject.Build "RoomTriageStation" 1
                 Goal.SmartObject.Build "MedicineLab" 1
                 Goal.SmartObject.Build "MedicineCabinet" 1
@@ -590,11 +610,13 @@ Def.Scenario.Add {
                     Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ()]
                 ]
                 Reward.Profession 1 "GetActor" "FireFighter" [
-                    Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ();Actor.LevelUp ();Actor.LevelUp ()]
+                    Hq.Actors.CreateOtherShift "FireFighter" [Actor.LevelUp ();Actor.LevelUp ()]
                 ]
             ]
             Events = [
-                When.Init []
+                When.Init [
+                   // Hq.showQuestGiver "SanFran_Limited_ExpandFireDept"
+                ]
                 When.Objective.Done [
                     Hq.Objective.add "SanFran_Limited_HireFirefighter"
                     Hq.Unlocks.Add "SF_ExpandFirefighterDeptP1_Done"
@@ -607,7 +629,8 @@ Def.Scenario.Add {
                 Goal.SmartObject.Build "FireTruck_US" 1
                 Goal.Profession.CrewLimitAtLeast "FireFighter" 25
                 Goal.Profession.Hire "FireFighter" 5
-                Goal.SmartObject.Build "WaterBuckets_01" 2    
+                Goal.SmartObject.Build "WaterBuckets_01" 2
+                  
             ]
             Rewards = [
                 Reward.Profession 5 "GetActor" "FireFighter" [
@@ -694,7 +717,8 @@ Def.Scenario.Add {
             }
         })    
 
-//Advanced common objects
+
+        //Advanced common objects
         Def.SmartObject.Update "SofaChair" (fun x -> 
         {x with 
             Unlock = Some {
@@ -758,7 +782,11 @@ Def.Scenario.Add {
                 ]
             }
         })  
-/// MEDICAL DEPARTMENT
+
+
+
+
+        /// MEDICAL DEPARTMENT
         Def.SmartObject.Update "RoomTriageStation" (fun x -> 
         {x with 
             Unlock = Some {
@@ -826,6 +854,7 @@ Def.Scenario.Add {
                     Goal.HaveUnlocked "SF_Medical_Stage1_Done"
                     Goal.SmartObject.Build "MedicineCabinet" 1
                     Goal.SmartObject.Build "EquipmentCrashCart" 1
+                    
                 ]
             }
         })
@@ -954,11 +983,17 @@ Def.Scenario.Add {
             Unlock = Some {
                 RequiredReputation = 1000
                 Goals = [
-                    Goal.HaveUnlocked "SF_Medical_Stage1_Done"  
+                    Goal.HaveUnlocked "SF_Medical_Stage1_Done"
+                    
                 ]
             }
         })
-/// FIRE DEPARTMENT 
+////////////////////////////////////////////////
+        /// FIRE DEPARTMENT 
+        /// 
+        /// 
+        /// 
+        /// 
         Def.SmartObject.Update "PersonalLocker_Fire" (fun x -> 
         {x with 
             Unlock = Some {
@@ -1123,7 +1158,14 @@ Def.Scenario.Add {
                 ]
             }
         })
-/// POLICE UNLOCKS
+
+        /////////////////////
+        /// 
+        /// 
+        /// 
+        /// POLICE UNLOCKS
+        /// 
+        /// 
         Def.SmartObject.Update "HiringDeskPolice" (fun x -> 
         {x with 
             Unlock = None
@@ -1162,6 +1204,7 @@ Def.Scenario.Add {
                 RequiredReputation = 0
                 Goals = [
                     Goal.HaveUnlocked "SF_OfficeDone"
+                    
                 ]
             }
         })
@@ -1191,6 +1234,7 @@ Def.Scenario.Add {
                 RequiredReputation = 800
                 Goals = [
                     Goal.HaveUnlocked "SF_PoliceDone"
+                    
                 ]
             }
         })
@@ -1336,7 +1380,7 @@ Def.Scenario.Add {
                     Goal.HaveUnlocked "SF_PoliceDone"
                 ]
             }
-        }) 
+        })
         Def.SmartObject.Update "PoliceCar_RiotTruck" (fun x -> 
         {x with 
             Unlock = Some {
@@ -1365,156 +1409,7 @@ Def.Scenario.Add {
             }
         })
 
-    EndlessMode = [
-        {
-            ID = "0"
-            TimeLine = [
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 4 0 0., gt 4 1 0.
-                    Interval = Gt.hours 4.0
-                    Tags = ["USA"]
-                    Patterns = [
-                        {Weight = 1; Levels = [3;3;2;4]}
-                        {Weight = 5; Levels = [3;3;3;4]}
-                        {Weight = 5; Levels = [3;3;4]}
-                        {Weight = 3; Levels = [3;3;5]}
-                        {Weight = 1; Levels = [3;3;5]}
-                    ]            
-                }
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 2 12.0) (gt 0 5 20.0) "MassHysteria" "w_MassHysteria"
-                TimeLine.At (gt 0 1 1.0) [Hq.showQuestGiver "MassHysteria_Announced"]
-                TimeLine.At (gt 0 2 10.0) [Hq.showQuestGiver "MassHysteriaToDo"]
-                
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 0 2 12.0, gt 0 5 20.0
-                    Interval = Gt.hours 4.0
-                    Tags = ["MassHysteria"]
-                    Patterns = [
-                        {Weight = 4; Levels = [2;3]}
-                        {Weight = 5; Levels = [1;2;3]}
-                        {Weight = 3; Levels = [4;3]}
-                        {Weight = 2; Levels = [3;3]}
-                        {Weight = 1; Levels = [4]}
-                    ]               
-                }
-                TimeLine.At (gt 0 5 8.0) [Hq.showQuestGiver "MassHysteria_AlmostDone"]
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 6 12.0) (gt 0 6 14.0) "Stronghold" "w_Stronghold"
-                TimeLine.ForceEmergencyAt (gt 0 6 12.0) 99 99 ["Stronghold_Endless"]
-                TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "Stronghold_Impending"]
-            ]
-        }
-        {
-            ID = "1"
-            TimeLine = [
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 4 0 0., gt 4 1 0.
-                    Interval = Gt.hours 4.0
-                    Tags = ["USA"]
-                    Patterns = [
-                        {Weight = 1; Levels = [3;3;2;4]}
-                        {Weight = 5; Levels = [3;3;3;4]}
-                        {Weight = 5; Levels = [3;3;4]}
-                        {Weight = 3; Levels = [3;3;5]}
-                        {Weight = 1; Levels = [3;3;5]}
-                    ]            
-                }
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 2 12.0) (gt 0 5 20.0) "UnderSiege" "w_UnderSiege"
-                TimeLine.At (gt 0 1 1.0) [Hq.showQuestGiver "UnderSiege_Announced"]
-                TimeLine.At (gt 0 2 10.0) [Hq.showQuestGiver "UnderSiegeToDo"]
-                
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 0 2 12.0, gt 0 5 20.0
-                    Interval = Gt.hours 4.0
-                    Tags = ["UnderSiege"]
-                    Patterns = [
-                        {Weight = 2; Levels = [4;2;3]}
-                        {Weight = 3; Levels = [4;2;2]}
-                        {Weight = 1; Levels = [2;4]}
-                    ]               
-                }
-                TimeLine.At (gt 0 5 8.0) [Hq.showQuestGiver "UnderSiege_AlmostDone"]
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 6 12.0) (gt 0 6 14.0) "Stronghold" "w_Stronghold"
-                TimeLine.ForceEmergencyAt (gt 0 6 12.0) 99 99 ["Stronghold_Endless"]
-                TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "Stronghold_Impending"]
-            ]
-        }            
-        {
-            ID = "2"
-            TimeLine = [
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 4 0 0., gt 4 1 0.
-                    Interval = Gt.hours 4.0
-                    Tags = ["USA"]
-                    Patterns = [
-                        {Weight = 1; Levels = [3;3;2;4]}
-                        {Weight = 5; Levels = [3;3;3;4]}
-                        {Weight = 5; Levels = [3;3;4]}
-                        {Weight = 3; Levels = [3;3;5]}
-                        {Weight = 1; Levels = [3;3;5]}
-                    ]            
-                }
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 2 12.0) (gt 0 5 20.0) "UnderSiege" "w_UnderSiege"
-                TimeLine.At (gt 0 1 1.0) [Hq.showQuestGiver "UnderSiege_Announced"]
-                TimeLine.At (gt 0 2 10.0) [Hq.showQuestGiver "UnderSiegeToDo"]
-                
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 0 2 12.0, gt 0 5 20.0
-                    Interval = Gt.hours 4.0
-                    Tags = ["UnderSiege"]
-                    Patterns = [
-                        {Weight = 2; Levels = [4;2;3]}
-                        {Weight = 3; Levels = [4;2;2]}
-                        {Weight = 1; Levels = [2;4]}
-                    ]               
-                }
-                TimeLine.At (gt 0 5 8.0) [Hq.showQuestGiver "UnderSiege_AlmostDone"]
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 6 12.0) (gt 0 6 14.0) "HitWarehouse" "w_HitWarehouse"
-                TimeLine.ForceEmergencyAt (gt 0 6 12.0) 99 99 ["HitWarehouse_Endless"]
-                TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "HitWarehouse_Impending"]
-            ]
-        }
-        {
-            ID = "3"
-            TimeLine = [
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 4 0 0., gt 4 1 0.
-                    Interval = Gt.hours 4.0
-                    Tags = ["USA"]
-                    Patterns = [
-                        {Weight = 1; Levels = [3;3;2;4]}
-                        {Weight = 5; Levels = [3;3;3;4]}
-                        {Weight = 5; Levels = [3;3;4]}
-                        {Weight = 3; Levels = [3;3;5]}
-                        {Weight = 1; Levels = [3;3;5]}
-                    ]            
-                }
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 2 12.0) (gt 0 5 20.0) "MassHysteria" "w_MassHysteria"
-                TimeLine.At (gt 0 1 1.0) [Hq.showQuestGiver "MassHysteria_Announced"]
-                TimeLine.At (gt 0 2 10.0) [Hq.showQuestGiver "MassHysteriaToDo"]
-                
-                TimeLine.Interval.Emergencies {
-                    TimeSpan = gt 0 2 12.0, gt 0 5 20.0
-                    Interval = Gt.hours 4.0
-                    Tags = ["MassHysteria"]
-                    Patterns = [
-                        {Weight = 2; Levels = [1;2;3]}
-                        {Weight = 3; Levels = [1;2;2]}
-                        {Weight = 1; Levels = [2;3]}
-                    ]              
-                }
-                TimeLine.At (gt 0 5 8.0) [Hq.showQuestGiver "MassHysteria_AlmostDone"]
-
-                TimeLine.Wave (gt 0 1 1.0) (gt 0 6 12.0) (gt 0 6 14.0) "HitWarehouse" "w_HitWarehouse"
-                TimeLine.ForceEmergencyAt (gt 0 6 12.0) 99 99 ["HitWarehouse_Endless"]
-                TimeLine.At (gt 0 6 8.0) [Hq.showQuestGiver "HitWarehouse_Impending"]
-            ]
-        }
-    ]
+        
+        
+    EndlessMode = []
 }
