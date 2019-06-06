@@ -1,49 +1,37 @@
 #load "Include.fsx"
 open EMT.Modding
 
-let autoRepair = 
-    for smartObject in Def.SmartObject |> Seq.toArray do
-        match smartObject.Type with
-        // is it a station?
-        | Some (:? StationObjectDef as v) ->
-            // update defintion
-            if v.InputSlots.Length > 0 then 
-                Def.SmartObject.Update smartObject.ID (fun x ->
-                    {x with
-                        Type = SmartObjectType.Station
-                            {v with
-                                    ProcessingTime = Gt.hours 0.0
-                                    AutoActivate = Yes
-                            }
-                    })
-        // no -> ignore
-        | _ -> ()
-        //smartObject.ActivatableCondition
+// Function to update the ProcessingTime of
+// a SmartObject with the given ID and activate it automatically
+let AutoRepair id = 
+    Def.SmartObject.Update id (fun x ->
+        {x with
+            Type = SmartObjectType.Station
+                {(x.Type.Value :?> StationObjectDef) with
+                    ProcessingTime = Gt.hours 0.0
+                    AutoActivate = Yes
+                }
+        })
 
-Def.Scenario.Update "Berlin_Original" (fun x -> 
-    {x with 
-        Modifications = fun () ->
-            x.Modifications () 
-            autoRepair
-    })
-
-Def.Scenario.Update "Berlin_Limited" (fun x -> 
-    {x with 
-        Modifications = fun () ->
-            x.Modifications () 
-            autoRepair
-    })
-
-Def.Scenario.Update "SanFran_Limited" (fun x -> 
-    {x with 
-        Modifications = fun () ->
-            x.Modifications () 
-            autoRepair
-    })
-
-Def.Scenario.Update "SanFran_Hard" (fun x -> 
-    {x with 
-        Modifications = fun () ->
-            x.Modifications () 
-            autoRepair
-    })
+for scenario in Def.Scenario |> Seq.toArray do
+    Def.Scenario.Update scenario.ID (fun x -> 
+        {x with 
+            Modifications = fun () ->
+                x.Modifications ()
+                // Setting the new attributes per SmartObject
+                // Use AutoRepair string
+                AutoRepair "GasBottleRefiller"
+                AutoRepair "FoamExtinguisherStation"
+                AutoRepair "HazmatSuitMaintenance"
+                AutoRepair "SubPumpMaintenance"
+                AutoRepair "BreachingGearMaintenance"
+                AutoRepair "PoliceArmory"
+                AutoRepair "US_PoliceArmory"
+                AutoRepair "BombDefusalWorkshop"
+                AutoRepair "RiotGearKit"
+                AutoRepair "SniperArmory"
+                AutoRepair "DroneWorkshop"
+                AutoRepair "DivingWorkshop"
+                AutoRepair "CrowdControlWorkshop"
+                AutoRepair "K9UnitWorkshop"
+        })
