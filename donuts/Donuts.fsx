@@ -85,7 +85,7 @@ Def.Tracker.Add {
 
 Def.Profession.Update "Police" (fun x ->
     {x with 
-        Events = [
+        Events = x.Events @ [
         When.ShiftStart [
             Actor.Traits.Add "Need_Donuts"
         ]
